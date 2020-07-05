@@ -1,9 +1,12 @@
 package com.systemsmart.entity;
 
-
+/*  Author: Christ Kitenge Mbuyi <217248756@mycput.ac.za>
+    Description: This class specifies the attributes of the Complaint entity using builder pattern
+    Date: 05 July 2020
+*/
 public class Complaint {
 
-    //Christ Kitenge Mbuyi (217248756)
+
 
     private long complaintID;
     private String description;
@@ -16,19 +19,6 @@ public class Complaint {
         this.logStatus = builder.logStatus;
     }
 
-    //Setters
-
-    public void setComplaintID(long complaintID) {
-        this.complaintID = complaintID;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setLogStatus(String logStatus) {
-        this.logStatus = logStatus;
-    }
 
     //Getters
 

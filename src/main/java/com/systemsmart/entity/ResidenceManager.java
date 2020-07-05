@@ -1,23 +1,33 @@
 package com.systemsmart.entity;
 
-public class ResidenceManager {
-    //Christ Kitenge Mbuyi (217248756)
+/*  Author: Christ Kitenge Mbuyi <217248756@mycput.ac.za>
+    Description: This class specifies the attributes of the Residence Manager entity using builder pattern
+    Date: 05 July 2020
+*/
 
-    private int managerId;
-    private String firstName, lastName;
+public class ResidenceManager {
+
+
+    private long employeeId;
+    private String firstName, lastName, employmentDate, residenceName;
+    private int accessLevel;
 
     // Constructor
     private ResidenceManager(Builder builder)
     {
-        this.managerId = builder.managerId;
+        this.employeeId = builder.employeeId;
         this.firstName = builder.firstName;
         this.lastName = builder.lastName;
+        this.employmentDate = builder.employmentDate;
+        this.residenceName = builder.residenceName;
+        this.accessLevel = builder.accessLevel;
+
     }
 
     // Getters
-    public int getManagerId()
+    public long getEmployeeId()
     {
-        return managerId;
+        return employeeId;
     }
 
     public String getFirstName()
@@ -30,24 +40,42 @@ public class ResidenceManager {
         return lastName;
     }
 
-    @Override
-    public String toString()
+    public String getEmploymentDate()
     {
+        return employmentDate;
+    }
+
+    public String getResidenceName()
+    {
+        return residenceName;
+    }
+
+    public int getAccessLevel()
+    {
+        return accessLevel;
+    }
+
+    @Override
+    public String toString() {
         return "ResidenceManager{" +
-                "managerId=" + managerId +
+                "employeeId=" + employeeId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", employmentDate='" + employmentDate + '\'' +
+                ", residenceName='" + residenceName + '\'' +
+                ", accessLevel=" + accessLevel +
                 '}';
     }
 
     // Builder Class
     public static class Builder {
-        private int managerId;
-        private String firstName, lastName;
+        private long employeeId;
+        private String firstName, lastName, employmentDate, residenceName;
+        private int accessLevel;
 
-        public Builder setManagerId(int managerId)
+        public Builder setEmployeeId(long employeeId)
         {
-            this.managerId = managerId;
+            this.employeeId = employeeId;
             return this;
         }
 
@@ -60,13 +88,35 @@ public class ResidenceManager {
         {
             this.lastName = lastName;
             return this;
+
+        }
+
+        public Builder setEmploymentDate(String employmentDate)
+        {
+            this.employmentDate = employmentDate;
+            return this;
+        }
+
+        public Builder setResidenceName(String residenceName)
+        {
+            this.residenceName = residenceName;
+            return this;
+        }
+
+        public Builder setAccessLevel(int accessLevel)
+        {
+            this.accessLevel = accessLevel;
+            return this;
         }
 
         public  Builder copy(ResidenceManager residenceManager)
         {
-            this.managerId = residenceManager.managerId;
+            this.employeeId = residenceManager.employeeId;
             this.firstName = residenceManager.firstName;
             this.lastName = residenceManager.lastName;
+            this.employmentDate = residenceManager.employmentDate;
+            this.residenceName = residenceManager.residenceName;
+            this.accessLevel = residenceManager.accessLevel;
             return this;
         }
 

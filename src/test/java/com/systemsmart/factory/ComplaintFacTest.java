@@ -7,6 +7,11 @@ import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.assertTimeout;
 import static java.time.Duration.ofMinutes;
 
+/*  Author: Christ Kitenge Mbuyi <217248756@mycput.ac.za>
+    Description: This class performs some tests on the Complaint Factory class
+    Date: 05 July 2020
+*/
+
 
 public class ComplaintFacTest {
 
