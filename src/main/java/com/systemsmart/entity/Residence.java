@@ -1,5 +1,9 @@
 package com.systemsmart.entity;
 
+/* Author: Brandon Eugene Charles <218220065@mycput.ac.za>
+Description: Residence Entity.
+Date: 05/07
+*/
 public class Residence {
 
     private int residenceId;
