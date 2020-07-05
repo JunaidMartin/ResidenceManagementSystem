@@ -9,7 +9,7 @@ public class University {
 
     private String universityName;
 
-    private University (University.Builder builder){
+    private University (Builder builder){
 
         this.universityName = builder.universityName;
     }
