@@ -1,5 +1,5 @@
 package com.systemsmart.entity;
-//Finished fixing all eras
+//Finished fixing all errors
 /*@ Author: Luzuko Tshaka  <216007542@mycput.ac.za>
   @ description : Domain Driven Design - Facility Entity
   @ Date: -05/07/2020
