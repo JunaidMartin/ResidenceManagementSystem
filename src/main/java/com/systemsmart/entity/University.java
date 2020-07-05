@@ -1,5 +1,9 @@
 package com.systemsmart.entity;
 //Finshed fixing eras
+/*Author: @Phumelela Hoho
+* <212195131@mycput.ac.za>
+Description: Domain class description
+* Date: 05/07/2020*/
 
 public class University {
 
@@ -8,6 +12,17 @@ public class University {
     private University (University.Builder builder){
 
         this.universityName = builder.universityName;
+    }
+
+    public String getUniversityName() {
+        return universityName;
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return "University{" +
+                "universityName='" + universityName + '\'' +
+                '}';
     }
 
     public static class Builder{
@@ -30,14 +45,4 @@ public class University {
         }
     }
 
-    public String getUniversityName() {
-        return universityName;
-    }
-
-    @java.lang.Override
-    public java.lang.String toString() {
-        return "University{" +
-                "universityName='" + universityName + '\'' +
-                '}';
-    }
 }

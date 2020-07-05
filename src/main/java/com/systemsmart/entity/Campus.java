@@ -1,4 +1,8 @@
 package com.systemsmart.entity;
+/*Author: @Phumelela Hoho
+* <212195131@mycput.ac.za>
+Description: Domain class description
+* Date: 05/07/2020*/
 
 public class Campus {
     private int campusId;
@@ -7,6 +11,22 @@ public class Campus {
     private Campus (Builder builder){
         this.campusId = builder.campusId;
         this.name = builder.name;
+    }
+
+    public int getCampusId() {
+        return campusId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return "Campus{" +
+                "campusId=" + campusId +
+                ", name='" + name + '\'' +
+                '}';
     }
 
     public static class Builder{
@@ -34,21 +54,6 @@ public class Campus {
         }
     }
 
-    public int getCampusId() {
-        return campusId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    @java.lang.Override
-    public java.lang.String toString() {
-        return "Campus{" +
-                "campusId=" + campusId +
-                ", name='" + name + '\'' +
-                '}';
-    }
 }
 
 
