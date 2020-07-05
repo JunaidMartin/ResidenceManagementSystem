@@ -1,6 +1,11 @@
 package com.systemsmart.factory;
 
 import com.systemsmart.entity.Student;
+
+/* Author: @Junaid Martin <216178606@mycput.ac.za>
+Description: StudentFactory to build Student Entity objects.
+Date: 05/07
+*/
 public class StudentFactory {
 
     public static Student createStudent(long studNum, String firstName, String lastName,
