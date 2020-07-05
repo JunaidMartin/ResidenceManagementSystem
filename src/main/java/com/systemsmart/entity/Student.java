@@ -1,5 +1,9 @@
 package com.systemsmart.entity;
 
+/* Author: @Junaid Martin <216178606@mycput.ac.za>
+Description: StudentFactory Test file.
+Date: 05/07
+*/
 public class Student{
     private long studNum;
     private String firstName;
