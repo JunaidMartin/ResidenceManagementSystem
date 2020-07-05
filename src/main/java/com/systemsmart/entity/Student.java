@@ -1,7 +1,7 @@
 package com.systemsmart.entity;
 
 /* Author: @Junaid Martin <216178606@mycput.ac.za>
-Description: StudentFactory Test file.
+Description: Student Entity to act as the end user of the system.
 Date: 05/07
 */
 public class Student{
