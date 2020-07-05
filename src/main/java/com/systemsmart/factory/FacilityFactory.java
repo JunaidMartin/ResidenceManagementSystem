@@ -20,7 +20,7 @@ public class FacilityFactory {
                 .setComputerEquipment(computerEquipment)
                 .setWifiAccess(wifiAccess)
                 .setElectricitySystem(electricitySystem)
-                .buil();
+                .build();
         return facility;
 
     }
