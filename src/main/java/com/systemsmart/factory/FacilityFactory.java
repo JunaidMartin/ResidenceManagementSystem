@@ -1,7 +1,7 @@
 package com.systemsmart.factory;
 /*@ Author: Luzuko Tshaka  <216007542@mycput.ac.za>
   @ description : Domain Driven Design - Facility Factory
-  @ Date: -05/07
+  @ Date: -05/07/2020
 */
 
 import com.systemsmart.entity.Facility;
