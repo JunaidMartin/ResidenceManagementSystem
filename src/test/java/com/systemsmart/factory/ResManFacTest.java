@@ -17,8 +17,8 @@ public class ResManFacTest {
     @Test
     public void ObjectEqualityTest() {
 
-        ResidenceManager rs = ResManagerFactory.resMan(217248756, "Joel", "Kutino", "10 Feb 2013", "Bellville", 7);
-        Assert.assertEquals("Kutino", rs.getLastName());
+        ResidenceManager r = ResManagerFactory.resMan(217248756, "Joel", "Kutino", "10 Feb 2013", "Bellville", 7);
+        Assert.assertEquals("Kutino", r.getLastName());
     }
 
     @Test

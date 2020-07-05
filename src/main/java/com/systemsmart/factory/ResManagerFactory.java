@@ -11,8 +11,8 @@ public class ResManagerFactory {
 
     public static ResidenceManager resMan(int employeeId, String firstName, String lastName, String employmentDate, String residenceName, int accessLevel){
 
-        ResidenceManager rs = new ResidenceManager.Builder().setEmployeeId(employeeId).setFirstName(firstName).setLastName(lastName).setEmploymentDate(employmentDate).setResidenceName(residenceName).setAccessLevel(accessLevel).build();
+        ResidenceManager rm = new ResidenceManager.Builder().setEmployeeId(employeeId).setFirstName(firstName).setLastName(lastName).setEmploymentDate(employmentDate).setResidenceName(residenceName).setAccessLevel(accessLevel).build();
 
-        return rs;
+        return rm;
     }
 }
