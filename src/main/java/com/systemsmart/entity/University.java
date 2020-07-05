@@ -13,12 +13,12 @@ public class University {
 
         private String universityName;
 
-        public University.Builder setUniversityName(String universityName){
+        public Builder setUniversityName(String universityName){
             this.universityName = universityName;
             return this;
         }
 
-        public University.Builder copy(University university){
+        public Builder copy(University university){
 
             this.universityName = university.universityName;
             return this;
