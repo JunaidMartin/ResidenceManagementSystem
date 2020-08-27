@@ -143,7 +143,7 @@ public class Facility {
         }
 
 
-        public Facility buil()
+        public Facility build()
         {
             return new Facility(this);
 
