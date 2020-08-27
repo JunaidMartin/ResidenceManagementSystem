@@ -5,7 +5,7 @@ Description: Student Entity to act as the end user of the system.
 Date: 05/07
 */
 public class Student{
-    private long studNum;
+    private String studNum;
     private String firstName;
     private String lastName;
     private String campus;
@@ -24,7 +24,7 @@ public class Student{
     }
 
     // Getters
-    public long getStudNum() {
+    public String getStudNum() {
         return studNum;
     }
     public String getFirstName() {
@@ -48,7 +48,7 @@ public class Student{
 
     //Builder Class
     public static class Builder{
-        private long studNum;
+        private String studNum;
         private String firstName;
         private String lastName;
         private String campus;
@@ -56,7 +56,7 @@ public class Student{
         private String studEmail;
         private String contactNum;
 
-        public Builder setStudNum (long studNum){
+        public Builder setStudNum (String studNum){
             this.studNum = studNum;
             return this;
         }
