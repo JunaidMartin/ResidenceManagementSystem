@@ -13,7 +13,7 @@ public class ResidenceManager {
     private int accessLevel;
 
     // Constructor
-    private ResidenceManager(Builder builder)
+    public ResidenceManager(Builder builder)
     {
         this.employeeId = builder.employeeId;
         this.firstName = builder.firstName;
