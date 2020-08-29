@@ -6,13 +6,13 @@ package com.systemsmart.entity;
 */
 public class Facility {
 
-
+    private String facilityID;
     private Boolean laundromat, studyRoom, disabledFriendly, securityPersonnel, universityTransport, computerEquipment,
             wifiAccess;
     private String electricitySystem;
 
     private Facility(Builder builder){
-
+        this.facilityID = builder.facilityID;
         this.laundromat = builder.laundromat;
         this.studyRoom = builder.studyRoom;
         this.disabledFriendly = builder.disabledFriendly;

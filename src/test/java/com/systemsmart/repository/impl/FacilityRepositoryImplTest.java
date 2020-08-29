@@ -32,7 +32,7 @@ public class FacilityRepositoryImplTest {
 
     @Test
     public void c_update() {
-         Facility update = new Facility.Builder().copy(facility).setElectricitySystem("prepaid").build();
+         Facility update = new Facility.Builder().copy(facility).setDisabledFriendly(false).build();
          update = repository.update(update);
          System.out.println("update: "+ update);
     }
