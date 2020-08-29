@@ -6,13 +6,13 @@ package com.systemsmart.entity;
 */
 public class Facility {
 
-    private String facilityID;
+    private String facilityId;
     private Boolean laundromat, studyRoom, disabledFriendly, securityPersonnel, universityTransport, computerEquipment,
             wifiAccess;
     private String electricitySystem;
 
     private Facility(Builder builder){
-        this.facilityID = builder.facilityID;
+        this.facilityId = builder.facilityId;
         this.laundromat = builder.laundromat;
         this.studyRoom = builder.studyRoom;
         this.disabledFriendly = builder.disabledFriendly;
@@ -20,12 +20,12 @@ public class Facility {
         this.universityTransport = builder.universityTransport;
         this.computerEquipment = builder.computerEquipment;
         this.wifiAccess = builder.wifiAccess;
+        this.electricitySystem = builder.electricitySystem;
     }
 
-    public String getFacilityID() {
-        return facilityID;
+    public String getFacilityId() {
+        return facilityId;
     }
-
     public Boolean getLaundromat() {
         return laundromat;
     }
@@ -61,7 +61,7 @@ public class Facility {
     @Override
     public String toString() {
         return "Facility{" +
-                "facilityId"+ facilityID +
+                "facilityId"+ facilityId +
                 "laundromat=" + laundromat +
                 ", studyRoom=" + studyRoom +
                 ", disabledFriendly=" + disabledFriendly +
@@ -75,14 +75,14 @@ public class Facility {
 
     public static class Builder {
 
-        private String facilityID;
+        private String facilityId;
         private Boolean laundromat, studyRoom, disabledFriendly, securityPersonnel, universityTransport, computerEquipment,
                 wifiAccess;
         private String electricitySystem;
 
 
-        public Builder setFacilityID(String facilityID) {
-            this.facilityID = facilityID;
+        public Builder setFacilityId(String facilityId) {
+            this.facilityId = facilityId;
 
             return this;
         }
@@ -144,7 +144,7 @@ public class Facility {
 
         public Builder copy(Facility facility){
 
-            this.facilityID = facility.facilityID;
+            this.facilityId = facility.facilityId;
             this.laundromat = facility.laundromat;
             this.studyRoom = facility.studyRoom;
             this.disabledFriendly = facility.disabledFriendly;

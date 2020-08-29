@@ -8,12 +8,12 @@ import com.systemsmart.entity.Facility;
 
 public class FacilityFactory {
 
-    public static Facility createFacility(String facilityID,Boolean laundromat, Boolean studyRoom, Boolean disabledFriendly, boolean securityPersonnel, boolean universityTransport,
+    public static Facility createFacility(String facilityId,Boolean laundromat, Boolean studyRoom, Boolean disabledFriendly, boolean securityPersonnel, boolean universityTransport,
                                           boolean computerEquipment, boolean wifiAccess, String electricitySystem){
 
 
         Facility facility = new Facility.Builder()
-                .setFacilityID(facilityID)
+                .setFacilityId(facilityId)
                 .setLaundromat(laundromat)
                 .setStudyRoom(studyRoom)
                 .setDisabledFriendly(disabledFriendly)

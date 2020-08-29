@@ -20,13 +20,13 @@ public class FacilityRepositoryImplTest {
     public void a_create() {
 
         Facility create = repository.create(facility);
-        Assert.assertEquals(facility.getFacilityID(),create.getFacilityID());
+        Assert.assertEquals(facility.getFacilityId(),create.getFacilityId());
         System.out.println("create: "+ create);   }
 
     @Test
     public void b_read() {
 
-        Facility read = repository.read(facility.getFacilityID());
+        Facility read = repository.read(facility.getFacilityId());
         System.out.println("Read: "+ read);
     }
 
@@ -40,7 +40,7 @@ public class FacilityRepositoryImplTest {
     @Test
     public void e_delete() {
 
-        boolean deleted = repository.delete(facility.getFacilityID());
+        boolean deleted = repository.delete(facility.getFacilityId());
         Assert.assertTrue(deleted);
     }
 

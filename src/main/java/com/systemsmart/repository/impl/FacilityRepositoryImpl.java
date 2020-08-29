@@ -33,7 +33,7 @@ public class FacilityRepositoryImpl implements FacilityRepository {
     public Facility read(String facilityId) {
        for (Facility facility : this.facilityDB){
 
-           if (facility.getFacilityID().equalsIgnoreCase(facilityId))
+           if (facility.getFacilityId().equalsIgnoreCase(facilityId))
                return facility;
        }
         return null;
@@ -42,7 +42,7 @@ public class FacilityRepositoryImpl implements FacilityRepository {
     @Override
     public Facility update(Facility facility) {
 
-       boolean deleteFacility = delete(facility.getFacilityID());
+       boolean deleteFacility = delete(facility.getFacilityId());
                if (deleteFacility){
                    this.facilityDB.add(facility);
                    return facility;
