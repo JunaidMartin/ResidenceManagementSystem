@@ -8,15 +8,17 @@ import com.systemsmart.entity.Facility;
 
 public class FacilityFactory {
 
-    public static Facility createFacility(Boolean laundromat, Boolean studyRoom, Boolean disabledFriendly, boolean securityPersonnel,
+    public static Facility createFacility(String facilityId,Boolean laundromat, Boolean studyRoom, Boolean disabledFriendly, boolean securityPersonnel, boolean universityTransport,
                                           boolean computerEquipment, boolean wifiAccess, String electricitySystem){
 
 
         Facility facility = new Facility.Builder()
+                .setFacilityId(facilityId)
                 .setLaundromat(laundromat)
                 .setStudyRoom(studyRoom)
                 .setDisabledFriendly(disabledFriendly)
                 .setSecurityPersonnel(securityPersonnel)
+                .setUniversityTransport(universityTransport)
                 .setComputerEquipment(computerEquipment)
                 .setWifiAccess(wifiAccess)
                 .setElectricitySystem(electricitySystem)
