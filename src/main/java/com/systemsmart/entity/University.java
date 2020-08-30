@@ -21,8 +21,9 @@ public class University {
     @java.lang.Override
     public java.lang.String toString() {
         return "University{" +
-                "universityName='" + universityName + '\'' +
+                ", universityName='" + universityName + '\'' +
                 '}';
+
     }
 
     public static class Builder{
