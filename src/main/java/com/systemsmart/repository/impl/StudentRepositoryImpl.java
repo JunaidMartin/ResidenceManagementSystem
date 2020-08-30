@@ -1,7 +1,6 @@
 package com.systemsmart.repository.impl;
 
 import com.systemsmart.entity.Student;
-import com.systemsmart.repository.IRepository;
 import com.systemsmart.repository.StudentRepository;
 import java.util.HashSet;
 import java.util.Set;

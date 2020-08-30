@@ -28,6 +28,15 @@ public class Residence {
         return residenceName;
     }
 
+    @Override
+    public String toString() {
+        return "Residence{" +
+                "residenceId"+ residenceId +
+                "roomsAvailable=" + roomsAvailable +
+                ", residenceName=" + residenceName + '\'' +
+                '}';
+    }
+
     public static class Builder{
         private String residenceName;
         private int roomsAvailable;

@@ -43,7 +43,7 @@ public class CampusRepositoryImplTest {
 
     @Test
     public void e_delete() {
-        boolean deleted = repository.delete(campus.getCampusId());
+        boolean deleted = repository.delete(campus.getName());
         Assert.assertTrue(deleted);
     }
 
