@@ -13,7 +13,7 @@ public class Campus {
         this.name = builder.name;
     }
 
-    public String getCampusId() {
+    public int getCampusId() {
         return campusId;
     }
 
