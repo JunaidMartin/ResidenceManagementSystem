@@ -13,7 +13,7 @@ public class Campus {
         this.name = builder.name;
     }
 
-    public String getCampusId() {
+    public int getCampusId() {
         return campusId;
     }
 
@@ -21,13 +21,12 @@ public class Campus {
         return name;
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return "Campus{" +
-                "campusId='" + campusId + '\'' +
-                ", name='" + name  + '\'' +
+                "campusId=" + campusId +
+                ", name='" + name + '\'' +
                 '}';
-
     }
 
     public static class Builder{
