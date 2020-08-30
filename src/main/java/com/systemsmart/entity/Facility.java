@@ -6,13 +6,13 @@ package com.systemsmart.entity;
 */
 public class Facility {
 
-
+    private String facilityId;
     private Boolean laundromat, studyRoom, disabledFriendly, securityPersonnel, universityTransport, computerEquipment,
             wifiAccess;
     private String electricitySystem;
 
     private Facility(Builder builder){
-
+        this.facilityId = builder.facilityId;
         this.laundromat = builder.laundromat;
         this.studyRoom = builder.studyRoom;
         this.disabledFriendly = builder.disabledFriendly;
@@ -20,8 +20,12 @@ public class Facility {
         this.universityTransport = builder.universityTransport;
         this.computerEquipment = builder.computerEquipment;
         this.wifiAccess = builder.wifiAccess;
+        this.electricitySystem = builder.electricitySystem;
     }
 
+    public String getFacilityId() {
+        return facilityId;
+    }
     public Boolean getLaundromat() {
         return laundromat;
     }
@@ -57,6 +61,7 @@ public class Facility {
     @Override
     public String toString() {
         return "Facility{" +
+                "facilityId"+ facilityId +
                 "laundromat=" + laundromat +
                 ", studyRoom=" + studyRoom +
                 ", disabledFriendly=" + disabledFriendly +
@@ -69,10 +74,18 @@ public class Facility {
     }
 
     public static class Builder {
+
+        private String facilityId;
         private Boolean laundromat, studyRoom, disabledFriendly, securityPersonnel, universityTransport, computerEquipment,
                 wifiAccess;
         private String electricitySystem;
 
+
+        public Builder setFacilityId(String facilityId) {
+            this.facilityId = facilityId;
+
+            return this;
+        }
         public Builder setLaundromat(Boolean laundromat){
 
             this.laundromat = laundromat;
@@ -131,6 +144,7 @@ public class Facility {
 
         public Builder copy(Facility facility){
 
+            this.facilityId = facility.facilityId;
             this.laundromat = facility.laundromat;
             this.studyRoom = facility.studyRoom;
             this.disabledFriendly = facility.disabledFriendly;
