@@ -23,6 +23,19 @@ public class Student{
         this.contactNum = builder.contactNum;
     }
 
+    @Override
+    public String toString() {
+        return "Student{" +
+                "StudNum"+ studNum +
+                "firstName=" + firstName +
+                ", lastName=" + lastName +
+                ", campus=" + campus +
+                ", identityNum=" + identityNum +
+                ", studEmail=" + studEmail +
+                ", contactNum=" + contactNum + '\'' +
+                '}';
+    }
+
     // Getters
     public String getStudNum() {
         return studNum;
