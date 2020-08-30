@@ -1,5 +1,7 @@
 package com.systemsmart.entity;
 
+//  Author:  Inga Mzileni <216279631@mycput.ac.za>
+
 public class Address {
     private String street, suburb, city ;
     private int postalCode;
