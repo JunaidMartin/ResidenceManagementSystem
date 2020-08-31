@@ -4,8 +4,8 @@ import com.systemsmart.entity.Complaint;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
-import static org.junit.jupiter.api.Assertions.assertTimeout;
-import static java.time.Duration.ofMinutes;
+
+//import static org.junit.jupiter.api.Assertions.assertTimeout;
 
 /*  Author: Christ Kitenge Mbuyi <217248756@mycput.ac.za>
     Description: This class performs some tests on the Complaint Factory class
@@ -27,9 +27,9 @@ public class ComplaintFacTest {
     public void timeoutNotExceededTest()
     {
 
-        assertTimeout(ofMinutes(2), () -> {
+        /*assertTimeout(ofMinutes(2), () -> {
             // Perform task that takes less than 2 minutes.
-        });
+        });*/
     }
 
 

@@ -12,6 +12,7 @@ public class Complaint {
     private String description;
     private String logStatus;
 
+
     //constructor
     public Complaint(Builder builder) {
         this.complaintID = builder.complaintID;
@@ -35,6 +36,14 @@ public class Complaint {
         return logStatus;
     }
 
+    @Override
+    public String toString() {
+        return "Complaint{" +
+                "complaintID"+ complaintID +
+                "description=" + description +
+                ", logStatus=" + logStatus + '\'' +
+                '}';
+    }
 
     //Builder
 
