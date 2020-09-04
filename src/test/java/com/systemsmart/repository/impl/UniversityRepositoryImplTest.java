@@ -3,18 +3,16 @@ package com.systemsmart.repository.impl;
 * <212195131@mycput.ac.za>
 Description: Domain class description
 * Date: 28/08/2020*/
-import com.systemsmart.entity.Campus;
+
 import com.systemsmart.entity.University;
-import com.systemsmart.factory.CampusFactory;
 import com.systemsmart.factory.UniversityFactory;
-import com.systemsmart.repository.CampusRepository;
 import com.systemsmart.repository.UniversityRepository;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import static org.junit.Assert.*;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class UniversityRepositoryImplTest {
         private static UniversityRepository repository = UniversityRepositoryImpl.getRepository();
