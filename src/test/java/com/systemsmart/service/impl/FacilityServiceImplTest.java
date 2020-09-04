@@ -14,6 +14,10 @@ import org.junit.runners.MethodSorters;
 import java.util.Set;
 
 import static org.junit.Assert.*;
+
+/*@ Author: Luzuko Tshaka  <216007542@mycput.ac.za>
+  @ description : Domain Driven Design - Facility serviceImpl test
+*/
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class FacilityServiceImplTest {
 

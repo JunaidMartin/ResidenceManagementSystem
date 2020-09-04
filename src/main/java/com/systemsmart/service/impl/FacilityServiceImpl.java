@@ -4,9 +4,11 @@ import com.systemsmart.entity.Facility;
 import com.systemsmart.repository.FacilityRepository;
 import com.systemsmart.repository.impl.FacilityRepositoryImpl;
 import com.systemsmart.service.FacilityService;
-
-import java.util.HashSet;
 import java.util.Set;
+/*@ Author: Luzuko Tshaka  <216007542@mycput.ac.za>
+  @ description : Domain Driven Design - Facility serviceImpl
+*/
+
 
 public class FacilityServiceImpl implements FacilityService {
 
