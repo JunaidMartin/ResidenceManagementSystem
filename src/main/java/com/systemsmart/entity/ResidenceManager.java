@@ -58,12 +58,12 @@ public class ResidenceManager {
     @Override
     public String toString() {
         return "ResidenceManager{" +
-                "employeeId=" + employeeId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", employmentDate='" + employmentDate + '\'' +
-                ", residenceName='" + residenceName + '\'' +
-                ", accessLevel=" + accessLevel +
+                "employeeId: " + employeeId +
+                ", firstName: '" + firstName + '\'' +
+                ", lastName: '" + lastName + '\'' +
+                ", employmentDate: '" + employmentDate + '\'' +
+                ", residenceName: '" + residenceName + '\'' +
+                ", accessLevel: " + accessLevel +
                 '}';
     }
 
