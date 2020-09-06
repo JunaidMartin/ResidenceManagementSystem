@@ -32,7 +32,7 @@ public class RoomRepositoryImplTest {
 
     @Test
     public void c_update() {
-        Room updated = new Room.Builder().copy(room).setType("Single room").build();
+        Room updated = new Room.Builder().copy(room).setType("Single room").build("Room 100");
         updated = repository.update(updated);
         System.out.println("Updated: " + updated);
     }

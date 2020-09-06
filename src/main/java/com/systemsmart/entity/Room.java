@@ -8,11 +8,15 @@ public class Room {
     private int price;
     private boolean status;
 
-    private Room(Builder builder){
+    public Room(Builder builder){
         this.roomNumber = builder.roomNumber;
         this.price = builder.price;
         this.type = builder.type;
         this.status = builder.status;
+    }
+
+    public Room() {
+
     }
 
     public long getRoomNumber() {
@@ -39,6 +43,9 @@ public class Room {
                 ", type='" + type + '\'' +
                 ", status='" + status + '\'' +
                 '}';
+    }
+
+    public Room build() {
     }
 
     public static class Builder{
@@ -72,7 +79,7 @@ public class Room {
             return this;
         }
 
-        public Room build(){
+        public Room build(String s){
             return new Room(this);
         }
 
