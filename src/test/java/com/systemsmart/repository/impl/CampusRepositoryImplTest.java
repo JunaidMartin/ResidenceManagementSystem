@@ -3,18 +3,18 @@ package com.systemsmart.repository.impl;
 * <212195131@mycput.ac.za>
 Description: Domain class description
 * Date: 28/08/2020*/
+
+import com.sun.tools.javac.util.Assert;
 import com.systemsmart.entity.Campus;
-import com.systemsmart.entity.Student;
 import com.systemsmart.factory.CampusFactory;
-import com.systemsmart.factory.StudentFactory;
 import com.systemsmart.repository.CampusRepository;
-import com.systemsmart.repository.StudentRepository;
-import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import static org.junit.Assert.*;
+import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertEquals;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CampusRepositoryImplTest {
     private static CampusRepository repository = CampusRepositoryImpl.getRepository();
@@ -24,7 +24,7 @@ public class CampusRepositoryImplTest {
     @Test
     public void a_create() {
         Campus created = repository.create(campus);
-        Assert.assertEquals(campus.getCampusId(), created.getCampusId());
+        assertEquals(campus.getCampusId(), created.getCampusId());
         System.out.println ("Created: " + created);
     }
 
@@ -44,7 +44,7 @@ public class CampusRepositoryImplTest {
     @Test
     public void e_delete() {
         boolean deleted = repository.delete(campus.getName());
-        Assert.assertTrue(deleted);
+        assertTrue(deleted);
     }
 
     @Test
