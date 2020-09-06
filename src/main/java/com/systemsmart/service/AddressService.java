@@ -9,11 +9,5 @@ public interface AddressService<R> extends IService<Address, String, Address> {
 
     Set<Address> getAllStatingWithA();
 
-    Address create(Address t);
 
-    Address read(String s);
-
-    Address update(Address t);
-
-    boolean delete(String s);
 }
