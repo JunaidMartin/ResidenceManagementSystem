@@ -15,7 +15,7 @@ public class AddressServiceImpl implements AddressService {
 
 
     private  AddressServiceImpl(){
-        this.repository = AddressRepository.getRepository();
+        AddressRepository.getRepository();
 
     }
     public  static AddressService getService(){

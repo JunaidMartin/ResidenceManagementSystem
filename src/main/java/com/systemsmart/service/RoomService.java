@@ -11,4 +11,7 @@ public interface RoomService extends IService<Room, String, Room >{
     Set<Address> getAllStatingWithA();
 
 
+    Address create(Address t);
+
+    Address update(Address t);
 }
