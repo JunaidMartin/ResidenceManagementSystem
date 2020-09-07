@@ -7,7 +7,7 @@ Description: Domain class description
 import com.systemsmart.entity.University;
 import java.util.Set;
 
-public interface UniversityService extends IService <University, String> {
+public interface UniversityService extends IService <University, String, A> {
     Set<University> getAll();
     // unique business logic as per student.
     Set<University> getUniversityWithUniversityNameCPUT();

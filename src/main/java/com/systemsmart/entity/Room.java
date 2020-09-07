@@ -8,7 +8,8 @@ public class Room {
     private int price;
     private boolean status;
 
-    private Room(Builder builder){
+    public Room(){
+        Room builder = null;
         this.roomNumber = builder.roomNumber;
         this.price = builder.price;
         this.type = builder.type;
@@ -39,6 +40,9 @@ public class Room {
                 ", type='" + type + '\'' +
                 ", status='" + status + '\'' +
                 '}';
+    }
+
+    public void add(Room room) {
     }
 
     public static class Builder{
@@ -72,11 +76,13 @@ public class Room {
             return this;
         }
 
-        public Room build(){
-            return new Room(this);
+        public Room build(boolean b){
+            return new Room();
         }
 
 
+        public Builder() {
+        }
     }
 
 }

@@ -4,7 +4,7 @@ import com.systemsmart.entity.ResidenceManager;
 
 import java.util.Set;
 
-public interface ResidenceManagerService extends IService <ResidenceManager, String>{
+public interface ResidenceManagerService extends IService <ResidenceManager, String, A>{
 
     /*
      * Author: Christ Kitenge Mbuyi <217248756@mycput.ac.za>

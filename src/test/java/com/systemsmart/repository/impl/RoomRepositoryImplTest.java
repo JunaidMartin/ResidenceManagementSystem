@@ -1,5 +1,5 @@
 package com.systemsmart.repository.impl;
-
+//216279631 Mzileni Inga
 import com.systemsmart.entity.Room;
 import com.systemsmart.factory.RoomFactory;
 import com.systemsmart.repository.RoomRepository;
@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 public class RoomRepositoryImplTest {
 
     private static RoomRepository repository = RoomRepositoryImpl.getRoomRepository();
-    private static Room room = RoomFactory.createRoom("sinle room",100,300.00,true);
+    private static Room room = RoomFactory.createRoom("sinle room");
 
     @Test
     public void a_create() {
@@ -32,7 +32,7 @@ public class RoomRepositoryImplTest {
 
     @Test
     public void c_update() {
-        Room updated = new Room.Builder().copy(room).setType("Single room").build();
+        Room updated = new Room.Builder().copy(room).setType("Single room").build(false);
         updated = repository.update(updated);
         System.out.println("Updated: " + updated);
     }
