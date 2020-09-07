@@ -9,4 +9,7 @@ public class AddressFactory {
                 setPostel(postalCode).build();
     }
 
+    public static Address createAddress(String s) {
+        return null;
+    }
 }
