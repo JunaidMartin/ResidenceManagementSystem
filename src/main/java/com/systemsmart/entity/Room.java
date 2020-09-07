@@ -3,23 +3,19 @@ package com.systemsmart.entity;
 //  Author:  Inga Mzileni <216279631@mycput.ac.za>
 
 public class Room {
-    private String roomNumber;
+    private long roomNumber;
     private String  type;
     private int price;
     private boolean status;
 
-    public Room(Builder builder){
+    private Room(Builder builder){
         this.roomNumber = builder.roomNumber;
         this.price = builder.price;
         this.type = builder.type;
         this.status = builder.status;
     }
 
-    public Room() {
-
-    }
-
-    public String getRoomNumber() {
+    public long getRoomNumber() {
         return roomNumber;
     }
 
@@ -45,21 +41,16 @@ public class Room {
                 '}';
     }
 
-    public void build() {
-    }
-
-    public void getStreet() {
-    }
-
-    public void setType() {
-    }
-
     public static class Builder{
-        private String roomNumber;
+        private long roomNumber;
         private int price;
         private String type;
         private boolean status;
 
+        public Builder setRoomNumber(long roomNumber){
+            this.roomNumber = roomNumber;
+            return this;
+        }
         public Builder setPrice(int price){
             this.price = price;
             return this;
@@ -81,16 +72,11 @@ public class Room {
             return this;
         }
 
-        public Room build(String s){
+        public Room build(){
             return new Room(this);
         }
 
 
-        public void setRoomNumber(String roomNumber) {
-        }
-
-        public void setRoomNumber(int i) {
-        }
     }
 
 }
