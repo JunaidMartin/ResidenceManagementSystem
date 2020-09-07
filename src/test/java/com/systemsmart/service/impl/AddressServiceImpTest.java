@@ -21,7 +21,7 @@ public class AddressServiceImpTest {
     public void d_getAll() {
         Set<Address> addresses = service.getAll();
         assertEquals(1, addresses.size());
-        System.out.println("All campuses: " + addresses);
+        System.out.println("Address : " + addresses);
     }
 
     @Test

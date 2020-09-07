@@ -20,7 +20,7 @@ public class RoomServiceImplTest {
     public void d_getAll() {
         Set<Room> room = service.getAll();
         assertEquals(1, room.size());
-        System.out.println("Facility details " + room);
+        System.out.println("Room details " + room);
 
     }
 
