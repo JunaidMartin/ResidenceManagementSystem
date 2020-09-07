@@ -6,7 +6,7 @@ public class RoomFactory {
     public static Room createRoom(String type) {
         return new Room.Builder().setRoomNumber(roomNumber)
                 .setType(type).setPrice((int) price)
-                .setStatus(status).build(false);
+                .setStatus(status).build();
     }
 
 

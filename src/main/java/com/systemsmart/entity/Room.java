@@ -76,7 +76,7 @@ public class Room {
             return this;
         }
 
-        public Room build(boolean b){
+        public Room build(){
             return new Room();
         }
 
