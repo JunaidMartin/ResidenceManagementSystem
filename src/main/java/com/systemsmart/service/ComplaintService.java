@@ -1,6 +1,7 @@
 package com.systemsmart.service;
 
 import com.systemsmart.entity.Complaint;
+import com.systemsmart.entity.Student;
 
 import java.util.Set;
 
