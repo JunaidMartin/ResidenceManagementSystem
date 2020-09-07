@@ -4,7 +4,7 @@ import com.systemsmart.entity.Complaint;
 
 import java.util.Set;
 
-public interface ComplaintService extends IService <Complaint, String, A>{
+public interface ComplaintService extends IService <Complaint, String>{
     /*
      * Author: Christ Kitenge Mbuyi <217248756@mycput.ac.za>
      * Description: This is the complaint service interface
