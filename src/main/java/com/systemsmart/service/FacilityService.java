@@ -7,7 +7,7 @@ import java.util.Set;
   @ description : Domain Driven Design - Facility service
 */
 
-public interface FacilityService extends IService<Facility,String, A>{
+public interface FacilityService extends IService<Facility,String>{
 
     Set<Facility> getAll();
 
