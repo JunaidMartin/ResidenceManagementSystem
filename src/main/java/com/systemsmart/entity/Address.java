@@ -6,11 +6,15 @@ public class Address {
     private String street, suburb, city ;
     private int postalCode;
 
-    private Address(Builder builder){
+    public Address(Builder builder){
         this.street = builder.street;
         this.suburb = builder.suburb;
         this.city = builder.city;
         this.postalCode = builder.postalCode;
+    }
+
+    public Address() {
+
     }
 
     public String getStreet() {
