@@ -39,9 +39,9 @@ public class Complaint {
     @Override
     public String toString() {
         return "Complaint{" +
-                "complaintID"+ complaintID +
-                "description=" + description +
-                ", logStatus=" + logStatus + '\'' +
+                " complaintID: "+ complaintID +
+                ", description: " + description +
+                ", logStatus: " + logStatus + '\'' +
                 '}';
     }
 

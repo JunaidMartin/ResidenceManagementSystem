@@ -11,7 +11,7 @@ public class RoomFactoryTest {
 
     @Test
     public void createRoom() {
-        Room room = RoomFactory.createRoom("single room", 100, 10, true);
+        Room room = RoomFactory.createRoom("single room");
         Assert.assertEquals(10, room.getRoomNumber());
     }
 }

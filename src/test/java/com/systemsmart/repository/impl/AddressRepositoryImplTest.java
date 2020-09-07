@@ -1,5 +1,5 @@
 package com.systemsmart.repository.impl;
-
+//216279631 Mzileni Inga
 import com.systemsmart.entity.Address;
 import com.systemsmart.factory.AddressFactory;
 import com.systemsmart.repository.AddressRepository;
@@ -16,7 +16,7 @@ public class AddressRepositoryImplTest {
 
     private static AddressRepository repository =  AddressRepositoryImpl.getAddressRepository();
 
-    private static Address address = AddressFactory.createAddress("251 Msenge Street", "Philippi", "Cape Town", 7750);
+    private static Address address = AddressFactory.createAddress("251 Msenge Street");
 
     @Test
     public void a_create() {

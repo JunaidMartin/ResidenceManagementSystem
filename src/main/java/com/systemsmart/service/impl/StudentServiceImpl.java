@@ -8,6 +8,10 @@ import com.systemsmart.service.StudentService;
 import java.util.HashSet;
 import java.util.Set;
 
+/*
+ * Author: Junaid Martin <216178606@mycput.ac.za>
+ * Date: 07 September 2020
+ */
 public class StudentServiceImpl implements StudentService {
 
     private static StudentService service = null;
