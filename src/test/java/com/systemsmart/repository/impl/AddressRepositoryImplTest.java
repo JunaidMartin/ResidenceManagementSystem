@@ -1,13 +1,17 @@
 package com.systemsmart.repository.impl;
-/*Inga Mzileni Address entity*/
 
 import com.systemsmart.entity.Address;
 import com.systemsmart.factory.AddressFactory;
 import com.systemsmart.repository.AddressRepository;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import java.util.Set;
 
+import static org.junit.Assert.assertEquals;
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AddressRepositoryImplTest {
 
     private static AddressRepository repository =  AddressRepositoryImpl.getAddressRepository();
@@ -19,9 +23,6 @@ public class AddressRepositoryImplTest {
         Address created = repository.create(address);
         assertEquals(address.getStreet(), created.getStreet());
         System.out.println("create: " + created);
-    }
-
-    private void assertEquals(String street, String street1) {
     }
 
     @Test
@@ -48,8 +49,5 @@ public class AddressRepositoryImplTest {
         Set<Address> address = repository.getAll();
         assertEquals(1, address.size());
         System.out.println(repository.getAll());
-    }
-
-    private void assertEquals(int i, int size) {
     }
 }
