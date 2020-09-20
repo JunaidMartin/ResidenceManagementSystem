@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 public class AddressServiceImpTest {
     private static AddressService service = (AddressService) RoomServiceImpl.getService();
-    private static com.systemsmart.entity.Address address = AddressFactory.createAddress("2591 Msenge Street");
+    private static com.systemsmart.entity.Address address = AddressFactory.createAddress("2591 Msenge Street", "Upper Town", "Cape Town", 8001);
     private Object Address;
 
     @Test
