@@ -4,7 +4,7 @@ import com.systemsmart.entity.Address;
 
 import java.util.Set;
 
-public interface AddressService<R> extends IService<Address, String, Address> {
+public interface AddressService<R> extends IService<Address, String> {
     Set<Address> getAddressStreet();
 
     Set<Address> getAll();

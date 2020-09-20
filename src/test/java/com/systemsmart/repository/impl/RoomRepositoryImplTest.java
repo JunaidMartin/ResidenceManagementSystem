@@ -15,7 +15,8 @@ import static org.junit.Assert.assertEquals;
 public class RoomRepositoryImplTest {
 
     private static RoomRepository repository = RoomRepositoryImpl.getRoomRepository();
-    private static Room room = RoomFactory.createRoom("sinle room");
+    private static Room room = RoomFactory.createRoom(14, "single room", 3500, true );
+
 
     @Test
     public void a_create() {

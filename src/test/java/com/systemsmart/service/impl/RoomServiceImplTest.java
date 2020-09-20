@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 
 public class RoomServiceImplTest {
     private static RoomService service = RoomServiceImpl.getService();
-    private static com.systemsmart.entity.Room room = RoomFactory.createRoom("available");
+    private static com.systemsmart.entity.Room room = RoomFactory.createRoom(14, "Single room" ,8500, true);
     private static Object Room;
 
 

@@ -12,7 +12,7 @@ public class StudentFactoryTest {
 
     @Test
     public void createStudent() {
-        Student student = StudentFactory.createStudent("216178606", "Junaid", "Martin",
+        Student student = StudentFactory.buildStudent("216178606", "Junaid", "Martin",
                 "CPUT District Six Campus", 9707105208087L, "216178606@mycput.ac.za", "0798159723");
         Assert.assertEquals(216178606, student.getStudNum());
     }

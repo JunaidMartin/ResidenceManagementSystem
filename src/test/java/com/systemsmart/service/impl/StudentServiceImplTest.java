@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
 public class StudentServiceImplTest {
 
     private static StudentService service = StudentServiceImpl.getService();
-    private static Student student = StudentFactory.createStudent("216178606", "Junade", "Martin",
+    private static Student student = StudentFactory.buildStudent("216178606", "Junade", "Martin",
             "CPUT District Six Campus", 9707105208087L, "216178606@mycput.ac.za", "0798159723");
 
     @Test
