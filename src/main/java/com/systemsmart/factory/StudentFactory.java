@@ -8,8 +8,8 @@ Date: 05/07
 */
 public class StudentFactory {
 
-    public static Student createStudent(String studNum, String firstName, String lastName,
-                                        String campus, long identityNum, String studEmail, String contactNum){
+    public static Student buildStudent(String studNum, String firstName, String lastName,
+                                       String campus, long identityNum, String studEmail, String contactNum){
         Student student = new Student.Builder()
                 .setStudNum(studNum)
                 .setFirstName(firstName)
@@ -21,4 +21,5 @@ public class StudentFactory {
                 .build();
         return student;
     }
+
 }

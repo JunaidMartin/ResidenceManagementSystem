@@ -16,7 +16,7 @@ public class AddressRepositoryImplTest {
 
     private static AddressRepository repository =  AddressRepositoryImpl.getAddressRepository();
 
-    private static Address address = AddressFactory.createAddress("251 Msenge Street");
+    private static Address address = AddressFactory.createAddress("251 Msenge Street", "Upper Town", "Cape Town", 8001);
 
     @Test
     public void a_create() {
