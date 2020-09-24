@@ -7,7 +7,7 @@ import java.util.Set;
 public interface RoomService extends IService<Room, String >{
     Set<Room> getAll();
 
-    Set<Room> getAllStatingWithA();
+    Set<Room> getRoomService();
 
 
 
