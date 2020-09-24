@@ -2,7 +2,9 @@ package com.systemsmart.entity;
 
 //  Author:  Inga Mzileni <216279631@mycput.ac.za>
 
-public class Address {
+import java.io.Serializable;
+
+public class Address implements Serializable {
     private String street, suburb, city ;
     private int postalCode;
 
@@ -13,9 +15,7 @@ public class Address {
         this.postalCode = builder.postalCode;
     }
 
-    public Address() {
-
-    }
+    private Address() { }
 
     public String getStreet() {
         return street;
