@@ -1,6 +1,5 @@
 package com.systemsmart.repository.impl;
 
-import static org.junit.Assert.*;
 import com.systemsmart.entity.Student;
 import com.systemsmart.factory.StudentFactory;
 import com.systemsmart.repository.StudentRepository;
@@ -8,14 +7,12 @@ import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import com.systemsmart.util.GenericHelper;
-import java.lang.reflect.Method;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class StudentRepositoryImplTest {
 
     private static StudentRepository repository = StudentRepositoryImpl.getRepository();
-    private static Student student = StudentFactory.createStudent("216178606", "Junade", "Martin",
+    private static Student student = StudentFactory.buildStudent("216178606", "Junade", "Martin",
             "CPUT District Six Campus", 9707105208087L, "216178606@mycput.ac.za", "0798159723");
 
     @Test

@@ -2,14 +2,17 @@ package com.systemsmart.entity;
 
 //  Author:  Inga Mzileni <216279631@mycput.ac.za>
 
-public class Room {
+import java.io.Serializable;
+
+public class Room implements Serializable {
     private long roomNumber;
     private String  type;
     private int price;
     private boolean status;
 
-    public Room(){
-        Room builder = null;
+    private  Room(){}
+
+    public Room(Builder builder){
         this.roomNumber = builder.roomNumber;
         this.price = builder.price;
         this.type = builder.type;
@@ -77,7 +80,7 @@ public class Room {
         }
 
         public Room build(){
-            return new Room();
+            return new Room(this);
         }
 
 
