@@ -2,34 +2,37 @@ package com.systemsmart.service.impl;
 //216279631 Mzileni Inga
 import com.systemsmart.entity.Room;
 import com.systemsmart.repository.RoomRepository;
+import com.systemsmart.repository.impl.RoomRepositoryImpl;
 import com.systemsmart.service.RoomService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class RoomServiceImpl implements RoomService {
 
-    private RoomService repository;
+    private RoomRepository repository;
     private static RoomService service = null;
 
 
     private  RoomServiceImpl(){
-        RoomRepository.getRepository();
+        this.repository = RoomRepositoryImpl.getRoomRepository();
 
     }
     public static RoomService getService(){
-        if(service == null) service  = new com.systemsmart.service.impl.RoomServiceImpl();
+        if(service == null) service  = new RoomServiceImpl();
         return service;
 
     }
 
     @Override
     public Set<Room> getAll() {
-        return this.getAllStatingWithA();
+        return this.repository.getAll();
     }
 
     @Override
-    public Set<Room> getAllStatingWithA() {
+    public Set<Room> getRoomService() {
         Set<Room> room = getAll();
         for (Room rooms : room)
             if (room.toString().trim().startsWith("100")) {
@@ -39,8 +42,8 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public Room create(Room t) {
-        return this.repository.create(t);
+    public Room create(Room room) {
+        return this.repository.create(room);
     }
 
 

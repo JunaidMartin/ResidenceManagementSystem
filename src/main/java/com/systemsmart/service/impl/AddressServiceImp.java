@@ -2,21 +2,20 @@ package com.systemsmart.service.impl;
 //216279631 Mzileni Inga
 import com.systemsmart.entity.Address;
 import com.systemsmart.repository.AddressRepository;
+import com.systemsmart.repository.impl.AddressRepositoryImpl;
 import com.systemsmart.service.AddressService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
-
+@Service
 public class AddressServiceImp implements AddressService {
     private AddressRepository repository;
     private static AddressService service = null;
 
     private AddressServiceImp() {
-        AddressServiceImp.getRepository();
-    }
-
-    private static void getRepository() {
+       this.repository = AddressRepositoryImpl.getAddressRepository();
     }
 
     public static AddressService getService() {
@@ -42,28 +41,23 @@ public class AddressServiceImp implements AddressService {
     }
 
     @Override
-    public Set<Address> getAllStatingWithA() {
-        return null;
-    }
-
-    @Override
-    public Object create(Object t) {
+    public Address create(Address t) {
         return this.repository.create((Address) t);
     }
 
     @Override
-    public Object read(Object o) {
+    public Address read(String o) {
         return this.repository.read((String) o);
 
     }
 
     @Override
-    public Object update(Object t) {
+    public Address update(Address t) {
         return this.repository.update((Address) t);
     }
 
     @Override
-    public boolean delete(Object o) {
+    public boolean delete(String o) {
 
         return this.repository.delete((String) o);
 
