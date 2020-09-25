@@ -3,9 +3,11 @@ import com.systemsmart.entity.ResidenceManager;
 import com.systemsmart.repository.ResManagerRepository;
 import com.systemsmart.repository.impl.ResManagerRepositoryImpl;
 import com.systemsmart.service.ResidenceManagerService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class ResidenceManagerServiceImpl implements ResidenceManagerService {
 
     // Christ Kitenge Mbuyi <217249756@mycput.ac.za>

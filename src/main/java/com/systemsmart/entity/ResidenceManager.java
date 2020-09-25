@@ -8,9 +8,11 @@ package com.systemsmart.entity;
 public class ResidenceManager {
 
 
-    private long employeeId;
+    private int employeeId;
     private String firstName, lastName, employmentDate, residenceName;
     private int accessLevel;
+
+    private ResidenceManager(){}
 
     // Constructor
     public ResidenceManager(Builder builder)
@@ -25,7 +27,7 @@ public class ResidenceManager {
     }
 
     // Getters
-    public long getEmployeeId()
+    public int getEmployeeId()
     {
         return employeeId;
     }
@@ -69,11 +71,11 @@ public class ResidenceManager {
 
     // Builder Class
     public static class Builder {
-        private long employeeId;
+        private int employeeId;
         private String firstName, lastName, employmentDate, residenceName;
         private int accessLevel;
 
-        public Builder setEmployeeId(long employeeId)
+        public Builder setEmployeeId(int employeeId)
         {
             this.employeeId = employeeId;
             return this;
