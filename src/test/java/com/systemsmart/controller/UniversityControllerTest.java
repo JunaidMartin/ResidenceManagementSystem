@@ -1,4 +1,8 @@
 package com.systemsmart.controller;
+/*Author: @Phumelela Hoho
+* <212195131@mycput.ac.za>
+Description: Domain class description
+* Date: 25/09/2020*/
 
 import com.systemsmart.entity.University;
 import com.systemsmart.factory.UniversityFactory;
