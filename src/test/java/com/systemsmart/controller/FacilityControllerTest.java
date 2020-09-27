@@ -5,7 +5,6 @@ package com.systemsmart.controller;
 */
 
 import com.systemsmart.entity.Facility;
-import com.systemsmart.entity.Room;
 import com.systemsmart.factory.FacilityFactory;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
