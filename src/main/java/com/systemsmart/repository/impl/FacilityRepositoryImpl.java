@@ -15,7 +15,7 @@ public class FacilityRepositoryImpl implements FacilityRepository {
       this.facilityDB = new HashSet<>();
    }
 
-        public static FacilityRepository getRepository(){
+        public static FacilityRepository getFacilityRepository(){
 
         if (repository == null)  repository = new FacilityRepositoryImpl();
         return  repository;

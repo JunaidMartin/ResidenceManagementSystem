@@ -8,7 +8,7 @@ import com.systemsmart.entity.Facility;
 
 public class FacilityFactory {
 
-    public static Facility createFacility(String facilityId,Boolean laundromat, Boolean studyRoom, Boolean disabledFriendly, boolean securityPersonnel, boolean universityTransport,
+    public static Facility createFacility(String facilityId,boolean laundromat, boolean studyRoom, boolean disabledFriendly, boolean securityPersonnel, boolean universityTransport,
                                           boolean computerEquipment, boolean wifiAccess, String electricitySystem){
 
 

@@ -12,6 +12,7 @@ public class Complaint {
     private String description;
     private String logStatus;
 
+    private Complaint(){}
 
     //constructor
     public Complaint(Builder builder) {
