@@ -1,17 +1,22 @@
 package com.systemsmart.entity;
+
+import java.io.Serializable;
+
 //Finished fixing all errors
 /*@ Author: Luzuko Tshaka  <216007542@mycput.ac.za>
   @ description : Domain Driven Design - Facility Entity
   @ Date: -05/07/2020
 */
-public class Facility {
+public class Facility implements Serializable {
 
     private String facilityId;
-    private Boolean laundromat, studyRoom, disabledFriendly, securityPersonnel, universityTransport, computerEquipment,
+    private boolean laundromat, studyRoom, disabledFriendly, securityPersonnel, universityTransport, computerEquipment,
             wifiAccess;
     private String electricitySystem;
 
-    private Facility(Builder builder){
+    private Facility(){}
+
+    public Facility(Builder builder){
         this.facilityId = builder.facilityId;
         this.laundromat = builder.laundromat;
         this.studyRoom = builder.studyRoom;
@@ -26,31 +31,32 @@ public class Facility {
     public String getFacilityId() {
         return facilityId;
     }
-    public Boolean getLaundromat() {
+
+    public boolean getLaundromat() {
         return laundromat;
     }
 
-    public Boolean getStudyRoom() {
+    public boolean getStudyRoom() {
         return studyRoom;
     }
 
-    public Boolean getDisabledFriendly() {
+    public boolean getDisabledFriendly() {
         return disabledFriendly;
     }
 
-    public Boolean getSecurityPersonnel() {
+    public boolean getSecurityPersonnel() {
         return securityPersonnel;
     }
 
-    public Boolean getUniversityTransport() {
+    public boolean getUniversityTransport() {
         return universityTransport;
     }
 
-    public Boolean getComputerEquipment() {
+    public boolean getComputerEquipment() {
         return computerEquipment;
     }
 
-    public Boolean getWifiAccess() {
+    public boolean getWifiAccess() {
         return wifiAccess;
     }
 
@@ -61,8 +67,8 @@ public class Facility {
     @Override
     public String toString() {
         return "Facility{" +
-                "facilityId"+ facilityId +
-                "laundromat=" + laundromat +
+                "facilityId='" + facilityId + '\'' +
+                ", laundromat=" + laundromat +
                 ", studyRoom=" + studyRoom +
                 ", disabledFriendly=" + disabledFriendly +
                 ", securityPersonnel=" + securityPersonnel +
@@ -76,7 +82,7 @@ public class Facility {
     public static class Builder {
 
         private String facilityId;
-        private Boolean laundromat, studyRoom, disabledFriendly, securityPersonnel, universityTransport, computerEquipment,
+        private boolean laundromat, studyRoom, disabledFriendly, securityPersonnel, universityTransport, computerEquipment,
                 wifiAccess;
         private String electricitySystem;
 
@@ -86,49 +92,49 @@ public class Facility {
 
             return this;
         }
-        public Builder setLaundromat(Boolean laundromat){
+        public Builder setLaundromat(boolean laundromat){
 
             this.laundromat = laundromat;
 
             return this;
         }
 
-        public Builder setStudyRoom(Boolean studyRoom){
+        public Builder setStudyRoom(boolean studyRoom){
 
             this.studyRoom = studyRoom;
 
             return this;
         }
 
-        public Builder setDisabledFriendly(Boolean disabledFriendly){
+        public Builder setDisabledFriendly(boolean disabledFriendly){
 
             this.disabledFriendly = disabledFriendly;
 
             return this;
         }
 
-        public Builder setSecurityPersonnel(Boolean securityPersonnel){
+        public Builder setSecurityPersonnel(boolean securityPersonnel){
 
             this.securityPersonnel = securityPersonnel;
 
             return this;
         }
 
-        public Builder setUniversityTransport(Boolean universityTransport){
+        public Builder setUniversityTransport(boolean universityTransport){
 
             this.universityTransport = universityTransport;
 
             return this;
         }
 
-        public Builder setComputerEquipment(Boolean computerEquipment){
+        public Builder setComputerEquipment(boolean computerEquipment){
 
             this.computerEquipment = computerEquipment;
 
             return this;
         }
 
-        public Builder setWifiAccess(Boolean wifiAccess){
+        public Builder setWifiAccess(boolean wifiAccess){
 
             this.wifiAccess = wifiAccess;
 
