@@ -4,9 +4,15 @@ package com.systemsmart.entity;
 Description: Domain class description
 * Date: 05/07/2020*/
 
-public class Campus {
+import java.io.Serializable;
+
+public class Campus implements Serializable {
     private int campusId;
     private String name;
+
+    private Campus(){
+
+    }
 
     private Campus (Builder builder){
         this.campusId = builder.campusId;

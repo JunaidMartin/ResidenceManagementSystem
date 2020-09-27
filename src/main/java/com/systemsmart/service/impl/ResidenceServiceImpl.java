@@ -4,6 +4,7 @@ import com.systemsmart.entity.Residence;
 import com.systemsmart.repository.ResidenceRepository;
 import com.systemsmart.repository.impl.ResidenceRepositoryImpl;
 import com.systemsmart.service.ResidenceService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
@@ -12,7 +13,7 @@ import java.util.Set;
     Description: This class implements the Residence Service
     Date: 5 September 2020
  */
-
+@Service
 public class ResidenceServiceImpl implements ResidenceService {
 
     private static ResidenceService residenceService = null;
