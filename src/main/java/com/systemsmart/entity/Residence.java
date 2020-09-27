@@ -1,14 +1,18 @@
 package com.systemsmart.entity;
 
+import java.io.Serializable;
+
 /* Author: Brandon Eugene Charles <218220065@mycput.ac.za>
 Description: Residence Entity.
 Date: 05/07
 */
-public class Residence {
+public class Residence implements Serializable {
 
     private int residenceId;
     private int roomsAvailable;
     private String residenceName;
+
+    private Residence(){}
 
     public Residence(Builder builder) {
         this.residenceId =  builder.residenceId;
@@ -31,8 +35,8 @@ public class Residence {
     @Override
     public String toString() {
         return "Residence{" +
-                "residenceId"+ residenceId +
-                "roomsAvailable=" + roomsAvailable +
+                "residenceId="+ residenceId +
+                ", roomsAvailable=" + roomsAvailable +
                 ", residenceName=" + residenceName + '\'' +
                 '}';
     }

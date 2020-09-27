@@ -4,20 +4,23 @@ import com.systemsmart.entity.Facility;
 import com.systemsmart.repository.FacilityRepository;
 import com.systemsmart.repository.impl.FacilityRepositoryImpl;
 import com.systemsmart.service.FacilityService;
+import org.springframework.stereotype.Service;
+
 import java.util.Set;
 /*@ Author: Luzuko Tshaka  <216007542@mycput.ac.za>
   @ description : Domain Driven Design - Facility serviceImpl
 */
 
-
+@Service
 public class FacilityServiceImpl implements FacilityService {
 
     private static FacilityService service = null;
     private FacilityRepository repository;
 
     private FacilityServiceImpl(){
-        this.repository = FacilityRepositoryImpl.getRepository();
+        this.repository = FacilityRepositoryImpl.getFacilityRepository();
     }
+
     public static FacilityService getService(){
         if (service == null) service = new FacilityServiceImpl();
         return service;

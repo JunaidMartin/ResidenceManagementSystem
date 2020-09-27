@@ -4,9 +4,11 @@ import com.systemsmart.entity.Complaint;
 import com.systemsmart.repository.ComplaintRepository;
 import com.systemsmart.repository.impl.ComplaintRepositoryImpl;
 import com.systemsmart.service.ComplaintService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class ComplaintServiceImpl implements ComplaintService {
 
     /*
