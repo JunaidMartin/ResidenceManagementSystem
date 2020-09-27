@@ -3,6 +3,7 @@ package com.systemsmart.controller;
 * <212195131@mycput.ac.za>
 Description: Domain class description
 * Date: 25/09/2020*/
+import com.systemsmart.entity.Address;
 import com.systemsmart.entity.Campus;
 import com.systemsmart.factory.CampusFactory;
 import org.junit.FixMethodOrder;
@@ -60,7 +61,10 @@ public class CampusControllerTest {
         String url = baseURL + "read/" + campus.getCampusId();
         System.out.println("URL: " + url);
         ResponseEntity<Campus> response = restTemplate.getForEntity(url, Campus.class);
-        assertEquals(campus.getCampusId(), response.getBody().getCampusId());
+        System.out.println(response);
+        System.out.println(response.getBody());
+
+
     }
 
     @Test
