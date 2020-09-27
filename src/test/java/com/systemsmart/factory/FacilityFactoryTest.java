@@ -18,5 +18,6 @@ public class FacilityFactoryTest {
                 true,true,true,true, " pre-paid electricity meter");
 
         Assert.assertEquals(true,facility.getStudyRoom());
+        System.out.println(facility.getStudyRoom());
     }
 }
