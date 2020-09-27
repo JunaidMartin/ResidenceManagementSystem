@@ -11,7 +11,8 @@ import org.junit.runners.MethodSorters;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class FacilityRepositoryImplTest {
 
-    private static FacilityRepository repository = FacilityRepositoryImpl.getRepository();
+    private static FacilityRepository repository = FacilityRepositoryImpl.getFacilityRepository();
+
     private Facility facility = FacilityFactory.createFacility("234555",true,true,true,
              true,true,true,true,"pre-paid electricity meter");
 
@@ -32,7 +33,7 @@ public class FacilityRepositoryImplTest {
 
     @Test
     public void c_update() {
-         Facility update = new Facility.Builder().copy(facility).setDisabledFriendly(false).build();
+         Facility update = new Facility.Builder().copy(facility).setElectricitySystem("Fixed Meter Electricity").build();
          update = repository.update(update);
          System.out.println("update: "+ update);
     }
