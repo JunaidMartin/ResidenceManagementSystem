@@ -9,7 +9,7 @@ import java.util.Set;
 
 /*
     Author: Brandon Charles 218220065@mycput.ac.za
-    Description: Residence service interface which extends IService in order to add getAll() and leave room for future methods
+    Description: Residence controller for handling requests
     Date:  26 September 2020
  */
 
