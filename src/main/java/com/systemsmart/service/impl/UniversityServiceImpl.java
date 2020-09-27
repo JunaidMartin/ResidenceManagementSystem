@@ -8,10 +8,12 @@ import com.systemsmart.entity.University;
 import com.systemsmart.repository.UniversityRepository;
 import com.systemsmart.repository.impl.UniversityRepositoryImpl;
 import com.systemsmart.service.UniversityService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class UniversityServiceImpl implements UniversityService {
     private static UniversityService service = null;
     private UniversityRepository repository;
