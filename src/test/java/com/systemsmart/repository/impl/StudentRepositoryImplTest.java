@@ -1,3 +1,4 @@
+/*
 package com.systemsmart.repository.impl;
 
 import com.systemsmart.entity.Student;
@@ -45,4 +46,4 @@ public class StudentRepositoryImplTest {
     public void d_getAll() {
         System.out.println("Get all: " + repository.getAll());
     }
-}
+}*/
