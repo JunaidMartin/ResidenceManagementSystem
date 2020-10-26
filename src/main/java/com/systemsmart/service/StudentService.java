@@ -10,5 +10,5 @@ import java.util.Set;
 public interface StudentService extends IService <Student, String> {
     Set<Student> getAll();
     // unique business logic as per student.
-    Set<Student> getStudentsWithStudentNumbers216();
+//    Set<Student> getStudentsWithStudentNumbers216();
 }
