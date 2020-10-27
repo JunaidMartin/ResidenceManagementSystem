@@ -15,7 +15,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-//@Service
+@Service
 public class UniversityServiceImpl implements UniversityService {
     @Autowired
     //private static UniversityService service = null;

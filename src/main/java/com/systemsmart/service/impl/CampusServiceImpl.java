@@ -16,7 +16,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-//@Service
+@Service
 public class CampusServiceImpl implements CampusService {
     @Autowired
     private CampusRepository repository;
