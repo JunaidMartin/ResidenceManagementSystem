@@ -1,11 +1,10 @@
 package com.systemsmart.repository;
 
 import com.systemsmart.entity.Student;
-import com.systemsmart.repository.IRepository;
-import com.systemsmart.repository.StudentRepository;
-import java.util.HashSet;
-import java.util.Set;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface StudentRepository extends IRepository <Student, String> {
-    Set<Student> getAll();
+
+@Repository
+public interface StudentRepository extends JpaRepository <Student, String>{
 }
