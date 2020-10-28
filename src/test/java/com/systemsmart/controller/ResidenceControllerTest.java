@@ -4,6 +4,7 @@ import com.systemsmart.entity.Residence;
 import com.systemsmart.factory.ResidenceFactory;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
@@ -35,7 +36,7 @@ public class ResidenceControllerTest {
         String url = baseURL + "create";
         ResponseEntity<Residence> response = testRestTemplate.postForEntity(url, residence, Residence.class);
         System.out.println("STATUS CODE: " + response.getStatusCode());
-        System.out.println("BODY: " + response.getBody());                               //Body should be the residence we've sent, formatted in json
+        System.out.println("BODY: " + response.getBody());                               //Body should be the residence we've sent
         Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
         Assert.assertEquals(residence.getResidenceId(), response.getBody().getResidenceId());
     }
@@ -46,7 +47,7 @@ public class ResidenceControllerTest {
         Residence res = new Residence.Builder().copy(residence).setNumberOfRooms(3).setName("RES 3").build();
         ResponseEntity<Residence> response = testRestTemplate.postForEntity(url, res, Residence.class);
         System.out.println("STATUS CODE: " + response.getStatusCode());
-        System.out.println("BODY: " + response.getBody());                              //Body should be the residence we've updated, formatted in json
+        System.out.println("BODY: " + response.getBody());                              //Body should be the residence we've updated
         Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
         Assert.assertEquals(res.getResidenceId(), response.getBody().getResidenceId());
     }
@@ -56,7 +57,7 @@ public class ResidenceControllerTest {
         String url = baseURL + residence.getResidenceId();
         ResponseEntity<Residence> response = testRestTemplate.getForEntity(url, Residence.class);
         System.out.println("STATUS CODE: " + response.getStatusCode());
-        System.out.println("BODY: " + response.getBody());                               //Body should be the updated residence, formatted in json
+        System.out.println("BODY: " + response.getBody());                               //Body should be the updated residence
         Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
         Assert.assertEquals(residence.getResidenceId(), response.getBody().getResidenceId());
     }
@@ -68,7 +69,7 @@ public class ResidenceControllerTest {
         HttpEntity<String> entity = new HttpEntity<>(null, headers);
         ResponseEntity<String> response = testRestTemplate.exchange(url, HttpMethod.GET, entity, String.class);
         System.out.println("STATUS CODE: " + response.getStatusCode());
-        System.out.println("BODY: " + response.getBody());                               //Body should be an array of residences formatted in json
+        System.out.println("BODY: " + response.getBody());                               //Body should be an array of residences
         Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 

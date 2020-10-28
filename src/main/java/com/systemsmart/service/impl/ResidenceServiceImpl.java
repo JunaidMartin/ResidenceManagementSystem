@@ -2,10 +2,11 @@ package com.systemsmart.service.impl;
 
 import com.systemsmart.entity.Residence;
 import com.systemsmart.repository.ResidenceRepository;
-import com.systemsmart.repository.impl.ResidenceRepositoryImpl;
 import com.systemsmart.service.ResidenceService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /*
@@ -16,40 +17,32 @@ import java.util.Set;
 @Service
 public class ResidenceServiceImpl implements ResidenceService {
 
-    private static ResidenceService residenceService = null;
+    @Autowired
     private ResidenceRepository residenceRepository = null;
-
-    private  ResidenceServiceImpl(){
-        residenceRepository = ResidenceRepositoryImpl.getRepository();
-    }
-
-    public static ResidenceService getService(){
-        if(residenceService == null) residenceService = new ResidenceServiceImpl();
-        return residenceService;
-    }
 
     @Override
     public Residence create(Residence residence) {
-        return residenceRepository.create(residence);
+        return this.residenceRepository.save(residence);
     }
 
     @Override
     public Residence read(Integer residenceId) {
-        return residenceRepository.read(residenceId);
+        return residenceRepository.findById(residenceId).orElseGet(null);
     }
 
     @Override
     public Residence update(Residence residence) {
-        return residenceRepository.update(residence);
+        return this.residenceRepository.save(residence);
     }
 
     @Override
     public boolean delete(Integer residenceId) {
-        return residenceRepository.delete(residenceId);
+        residenceRepository.deleteById(residenceId);
+        return !residenceRepository.existsById(residenceId);
     }
 
     @Override
     public Set<Residence> getAll() {
-        return residenceRepository.getAll();
+        return new HashSet<>(this.residenceRepository.findAll());
     }
 }
