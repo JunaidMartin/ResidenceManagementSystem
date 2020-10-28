@@ -17,7 +17,7 @@ public class AddressController {
 
     @PostMapping("/create")
     public Address create (@RequestBody Address address){
-        Address newAddress = AddressFactory.createAddress(address.getStreet(), address.getSuburb(), address.getCity(),address.getPostalCode());
+        Address newAddress = AddressFactory.createAddress(address.getAddressId(),address.getStreetNum(),address.getStreetName(), address.getSuburb(), address.getCity(),address.getPostalCode());
         return addressService.create(newAddress);
     }
 

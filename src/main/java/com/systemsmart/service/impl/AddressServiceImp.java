@@ -20,11 +20,11 @@ public class AddressServiceImp implements AddressService {
 
 
     @Override
-    public Set<Address> getAddressStreet() {
+    public Set<Address> getAddressId() {
         Set<Address> address = getAll();
         Set<Address> street = new HashSet<>();
         for (Address addresses : address) {
-            if (addresses.getStreet() == "9520 Msenge Street") {
+            if (addresses.getAddressId() == "012345") {
                 street.add(addresses);
             }
         }
@@ -49,7 +49,7 @@ public class AddressServiceImp implements AddressService {
 
     @Override
     public Address update(Address t) {
-        if (this.repository.existsById(t.getStreet())) {
+        if (this.repository.existsById(t.getAddressId())) {
             return this.repository.save(t);
         }
         return null;
