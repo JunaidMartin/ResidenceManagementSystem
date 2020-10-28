@@ -40,7 +40,7 @@
 //
 //    @Override
 //    public Address update(Address address){
-//        Address oldAddress = read(address.getStreet());
+//        Address oldAddress = read(address.getAddressId());
 //        if (oldAddress != null){
 //            this.addressDB.remove(oldAddress);
 //            this.addressDB.add(address);

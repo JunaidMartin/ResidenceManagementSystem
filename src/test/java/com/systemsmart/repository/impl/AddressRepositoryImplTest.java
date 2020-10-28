@@ -18,12 +18,12 @@
 //    @Autowired
 //    private static AddressRepository repository;
 //
-//    private static Address address = AddressFactory.createAddress("251 Msenge Street", "Upper Town", "Cape Town", 8001);
+//    private static Address address = AddressFactory.createAddress("012345", "2591", "Msenge", "Philippi", "Cape Town", "7785");
 //
 //    @Test
 //    public void a_create() {
 //        Address created = repository.create(address);
-//        assertEquals(address.getStreet(), created.getStreet());
+//        assertEquals(address.getAddressId(), created.getAddressId());
 //        System.out.println("create: " + created);
 //    }
 //
@@ -35,7 +35,7 @@
 //
 //    @Test
 //    public void c_update() {
-//        Address updated = new Address.Builder().copy(address).setStreet("2591 Msenge Street").build();
+//        Address updated = new Address.Builder().copy(address).setAddressId("012345").build();
 //        updated = repository.update(updated);
 //
 //        System.out.println("Updated: " + updated);
@@ -43,7 +43,7 @@
 //
 //    @Test
 //    public void e_delete() {
-//        repository.delete(address.toString());
+//        repository.delete(address.getAddressId());
 //    }
 //
 //    @Test

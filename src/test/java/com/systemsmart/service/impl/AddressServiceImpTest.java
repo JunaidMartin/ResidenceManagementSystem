@@ -17,7 +17,7 @@ public class AddressServiceImpTest {
 
     @Autowired
     private static AddressService service ;
-    private static com.systemsmart.entity.Address address = AddressFactory.createAddress("2591 Msenge Street", "Upper Town", "Cape Town", 8001);
+    private static com.systemsmart.entity.Address address = AddressFactory.createAddress("012345", "2591", "Msenge", "Phlippi", "Cape Town", "7785");
 
 
     @Test
@@ -30,7 +30,7 @@ public class AddressServiceImpTest {
     @Test
     public void a_create() {
         Address created =  service.create(address);
-        Assert.assertEquals(address.getStreet(), created.getStreet());
+        Assert.assertEquals(address.getAddressId(), created.getAddressId());
         System.out.println("Created: " + created);
     }
 
