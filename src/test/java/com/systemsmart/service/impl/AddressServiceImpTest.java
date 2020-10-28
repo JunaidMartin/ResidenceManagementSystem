@@ -7,15 +7,18 @@ import com.systemsmart.factory.AddressFactory;
 import com.systemsmart.service.AddressService;
 import org.junit.Assert;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Set;
 
 import static org.junit.Assert.*;
 
 public class AddressServiceImpTest {
-    private static AddressService service = AddressServiceImp.getService();
+
+    @Autowired
+    private static AddressService service ;
     private static com.systemsmart.entity.Address address = AddressFactory.createAddress("2591 Msenge Street", "Upper Town", "Cape Town", 8001);
-    private Object Address;
+
 
     @Test
     public void d_getAll() {
@@ -47,7 +50,6 @@ public class AddressServiceImpTest {
     @Test
     public void f_delete() {
         boolean deleted = service.delete(address.toString());
-
         Assert.assertTrue(deleted);
 
     }
