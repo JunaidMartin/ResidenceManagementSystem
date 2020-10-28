@@ -25,7 +25,7 @@ import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 
-public class FacilityControllerTest {
+public class  FacilityControllerTest {
 
 
     @Autowired
