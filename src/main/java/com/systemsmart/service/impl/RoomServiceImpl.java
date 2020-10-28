@@ -1,34 +1,26 @@
 package com.systemsmart.service.impl;
 //216279631 Mzileni Inga
+
 import com.systemsmart.entity.Room;
 import com.systemsmart.repository.RoomRepository;
-import com.systemsmart.repository.impl.RoomRepositoryImpl;
 import com.systemsmart.service.RoomService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.HashSet;
 import java.util.Set;
+import java.util.HashSet;
+import java.util.stream.Collectors;
 
 @Service
 public class RoomServiceImpl implements RoomService {
 
+    @Autowired
     private RoomRepository repository;
-    private static RoomService service = null;
 
 
-    private  RoomServiceImpl(){
-        this.repository = RoomRepositoryImpl.getRoomRepository();
-
-    }
-    public static RoomService getService(){
-        if(service == null) service  = new RoomServiceImpl();
-        return service;
-
-    }
 
     @Override
     public Set<Room> getAll() {
-        return this.repository.getAll();
+        return this.repository.findAll().stream().collect(Collectors.toSet());
     }
 
     @Override
@@ -43,25 +35,30 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public Room create(Room room) {
-        return this.repository.create(room);
+        return this.repository.save(room);
     }
 
 
     @Override
     public Room read(String s) {
-        return this.repository.read(s);
+        return this.repository.findById(s).orElseGet(null);
 
     }
 
 
     @Override
-    public Room update(Room t) {
-        return this.repository.update(t);
+    public  Room update(Room room) {
+        if (this.repository.existsById(room.getRoomNumber())) {
+            return this.repository.save(room);
+        }
+        return null;
     }
 
     @Override
     public boolean delete(String s) {
-        return this.repository.delete(s);
+        this.repository.deleteById(s);
+        if (this.repository.existsById(s)) return false;
+        else return true;
     }
 }
 

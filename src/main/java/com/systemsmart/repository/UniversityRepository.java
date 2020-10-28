@@ -4,12 +4,14 @@ package com.systemsmart.repository;
 Description: Domain class description
 * Date: 28/08/2020*/
 
-import com.systemsmart.entity.Campus;
-import com.systemsmart.entity.Student;
+
 import com.systemsmart.entity.University;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.Set;
 
-public interface UniversityRepository extends IRepository <University, String> {
-    Set<University> getAll();
+@Repository
+public interface UniversityRepository extends JpaRepository<University, String> {
 }
+

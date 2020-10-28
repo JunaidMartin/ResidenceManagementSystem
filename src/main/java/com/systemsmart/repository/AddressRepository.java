@@ -2,13 +2,12 @@ package com.systemsmart.repository;
 
 import com.systemsmart.entity.Address;
 import com.systemsmart.repository.IRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.Set;
 
-public interface AddressRepository extends IRepository <Address, String> {
-    static void getRepository() {
-    }
-
-    Set<Address> getAll();
+@Repository
+public interface AddressRepository extends JpaRepository<Address, String>{
 
 }
