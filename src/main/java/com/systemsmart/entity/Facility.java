@@ -1,20 +1,22 @@
 package com.systemsmart.entity;
 
-import java.io.Serializable;
-
-//Finished fixing all errors
+import javax.persistence.Entity;
+import javax.persistence.Id;
 /*@ Author: Luzuko Tshaka  <216007542@mycput.ac.za>
   @ description : Domain Driven Design - Facility Entity
-  @ Date: -05/07/2020
 */
-public class Facility implements Serializable {
 
+@Entity
+public class Facility {
+
+    @Id
     private String facilityId;
+
     private boolean laundromat, studyRoom, disabledFriendly, securityPersonnel, universityTransport, computerEquipment,
             wifiAccess;
     private String electricitySystem;
 
-    private Facility(){}
+    protected Facility(){}
 
     public Facility(Builder builder){
         this.facilityId = builder.facilityId;
