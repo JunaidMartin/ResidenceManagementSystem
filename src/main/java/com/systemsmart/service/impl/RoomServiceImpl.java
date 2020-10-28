@@ -48,7 +48,7 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public  Room update(Room room) {
-        if (this.repository.existsById(room.getRoomNumber())) {
+        if (this.repository.existsById(Long.toString(room.getRoomNumber()))){
             return this.repository.save(room);
         }
         return null;
