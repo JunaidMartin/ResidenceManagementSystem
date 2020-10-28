@@ -3,6 +3,7 @@ package com.systemsmart.controller;
 import com.systemsmart.entity.Address;
 import com.systemsmart.factory.AddressFactory;
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
@@ -40,6 +41,7 @@ public class AddressControllerTest {
     }
 
     @Test
+
     public void d_getAll() {
         String url = baseURL + "all";
         HttpHeaders headers = new HttpHeaders();
@@ -50,6 +52,7 @@ public class AddressControllerTest {
     }
 
     @Test
+
     public void b_read() {
         String url = baseURL + "read/" + address.getStreet();
         System.out.println("URL: " + url);
@@ -59,6 +62,7 @@ public class AddressControllerTest {
     }
 
     @Test
+
     public void c_update() {
         Address updated = new Address.Builder().copy(address).setStreet("5050 Kapa Street").build();
         String url = baseURL + "update";
@@ -70,6 +74,7 @@ public class AddressControllerTest {
     }
 
     @Test
+
     public void f_delete() {
         String url = baseURL + "delete/" + address.getStreet();
         System.out.println("URL: " + url);
