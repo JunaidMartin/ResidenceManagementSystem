@@ -10,6 +10,6 @@ import java.util.Set;
     Date:  5 September 2020
  */
 public interface ResidenceService extends IService<Residence, Integer> {
-
     Set<Residence> getAll();
+    //TODO: Business Logic for Residence
 }
