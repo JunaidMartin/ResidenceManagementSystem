@@ -11,8 +11,8 @@ public class AddressFactoryTest {
 
     @Test
     public void createAddress() {
-            Address address = AddressFactory.createAddress("Kloof street", "Upper Town", "Cape Town", 8001);
-            Assert.assertEquals("Kloof street", address.getStreet());
+            Address address = AddressFactory.createAddress("012345", "2591", "Msenge", "Philippi", "Cape Town", "7785");
+            Assert.assertEquals("012345", address.getAddressId());
         }
     }
 
