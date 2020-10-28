@@ -1,9 +1,12 @@
 package com.systemsmart.repository;
 
 import com.systemsmart.entity.ResidenceManager;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.Set;
 
-public interface ResManagerRepository extends IRepository<ResidenceManager, String> {
-    Set<ResidenceManager> retrieve();
+@Repository
+public interface ResManagerRepository extends JpaRepository<ResidenceManager, String> {
+   // Set<ResidenceManager> retrieve();
 }

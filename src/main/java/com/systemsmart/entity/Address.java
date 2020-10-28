@@ -2,11 +2,21 @@ package com.systemsmart.entity;
 
 //  Author:  Inga Mzileni <216279631@mycput.ac.za>
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.Objects;
 
+@Entity
 public class Address implements Serializable {
-    private String street, suburb, city ;
+
+    @Id
+    private String street;
+    private String suburb;
+    private String city ;
     private int postalCode;
+
+    protected Address() { }
 
     public Address(Builder builder){
         this.street = builder.street;
@@ -14,8 +24,6 @@ public class Address implements Serializable {
         this.city = builder.city;
         this.postalCode = builder.postalCode;
     }
-
-    private Address() { }
 
     public String getStreet() {
         return street;
@@ -79,5 +87,18 @@ public class Address implements Serializable {
         }
 
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Address address = (Address) o;
+        return street.equals(address.street);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(street);
     }
 }

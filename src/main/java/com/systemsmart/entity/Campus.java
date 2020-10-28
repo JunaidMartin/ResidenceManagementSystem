@@ -5,12 +5,16 @@ Description: Domain class description
 * Date: 05/07/2020*/
 
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
 public class Campus implements Serializable {
+   @Id
     private int campusId;
     private String name;
 
-    private Campus(){
+    protected Campus(){
 
     }
 
