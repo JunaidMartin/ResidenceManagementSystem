@@ -42,6 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/**/create/**", "/**/delete/**").hasRole(ADMIN_ROLE)
                 .antMatchers(HttpMethod.GET, "/**/read/**", "/**/all").hasRole(STUDENT_ROLE)
                 .and()
+                .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 
