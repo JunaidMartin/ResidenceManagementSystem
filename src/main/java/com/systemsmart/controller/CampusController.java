@@ -27,7 +27,7 @@ public class CampusController {
     }
 
     @GetMapping("/read/{id}")
-    public Campus read(@PathVariable String id){
+    public Campus read(@PathVariable int id){
         return campusService.read(id);
     }
 
@@ -42,7 +42,7 @@ public class CampusController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public boolean delete(@PathVariable String id){
+    public boolean delete(@PathVariable int id){
         return campusService.delete(id);
     }
 }
