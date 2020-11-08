@@ -3,6 +3,7 @@ package com.systemsmart.controller;
 import com.systemsmart.entity.Student;
 import com.systemsmart.factory.StudentFactory;
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
