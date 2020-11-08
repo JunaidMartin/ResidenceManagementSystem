@@ -3,16 +3,14 @@ package com.systemsmart.controller;
 import com.systemsmart.entity.Room;
 import com.systemsmart.factory.RoomFactory;
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.*;
@@ -23,19 +21,24 @@ import static org.junit.Assert.*;
 public class RoomControllerTest {
 
     private static Room room = RoomFactory.createRoom(10, "Single", 200, true);
+    private static String SECURITY_USERNAME = "admin";
+    private static String SECURITY_PASSWORD = "admin123";
 
     @Autowired
     private TestRestTemplate restTemplate;
-    private String baseURL = "http://localhost:8080/room/";
+    private String baseURL = "http://localhost:8080/systemsmart/room/";
 
     @Test
     public void a_create() {
         String url = baseURL + "create";
         System.out.println(url);
         System.out.println("Post data: "+ room);
-        ResponseEntity<Room> postResponse = restTemplate.postForEntity(url, room, Room.class);
+        ResponseEntity<Room> postResponse = restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .postForEntity(url, room, Room.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
+        //assertEquals(HttpStatus.FORBIDDEN, postResponse.getStatusCode());
         room = postResponse.getBody();
         System.out.println("Saved data: " + room);
         assertEquals(room.getRoomNumber(),postResponse.getBody().getRoomNumber());
@@ -46,7 +49,9 @@ public class RoomControllerTest {
         String url = baseURL + "all";
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null,headers);
-        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+        ResponseEntity<String> response = restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .exchange(url, HttpMethod.GET, entity, String.class);
         System.out.println(response);
         System.out.println(response.getBody());
     }
@@ -55,7 +60,9 @@ public class RoomControllerTest {
     public void b_read() {
         String url = baseURL + "read/" + room.getRoomNumber();
         System.out.println("URL: " + url);
-        ResponseEntity<Room> response = restTemplate.getForEntity(url, Room.class);
+        ResponseEntity<Room> response = restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .getForEntity(url, Room.class);
        System.out.println(response);
         System.out.println(response.getBody());
 
@@ -67,15 +74,18 @@ public class RoomControllerTest {
         String url = baseURL + "update";
         System.out.println("URL: "+ url);
         System.out.println("Post data: "+ updated);
-        ResponseEntity<Room> response = restTemplate.postForEntity(url, updated, Room.class);
+        ResponseEntity<Room> response = restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .postForEntity(url, updated, Room.class);
         room = response.getBody();
         assertEquals(room.getRoomNumber(),response.getBody().getRoomNumber());
     }
 
     @Test
+
     public void e_delete() {
         String url = baseURL + "delete/" + room.getRoomNumber();
         System.out.println("URL: " + url);
-        restTemplate.delete(url);
+        restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).delete(url);
     }
 }
