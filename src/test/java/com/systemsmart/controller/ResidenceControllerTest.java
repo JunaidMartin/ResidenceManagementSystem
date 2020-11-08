@@ -31,10 +31,13 @@ public class ResidenceControllerTest {
 
     private static Residence residence = ResidenceFactory.createResidence(223, 322, "Res232");
 
+    private static String USERNAME_ADMIN = "admin";
+    private static String PASSWORD_ADMIN = "admin123";
+
     @Test
     public void a_createResidence() {
         String url = baseURL + "create";
-        ResponseEntity<Residence> response = testRestTemplate.postForEntity(url, residence, Residence.class);
+        ResponseEntity<Residence> response = testRestTemplate.withBasicAuth(USERNAME_ADMIN, PASSWORD_ADMIN).postForEntity(url, residence, Residence.class);
         System.out.println("STATUS CODE: " + response.getStatusCode());
         System.out.println("BODY: " + response.getBody());                               //Body should be the residence we've sent
         Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -45,7 +48,7 @@ public class ResidenceControllerTest {
     public void b_updateResidence() {
         String url = baseURL + "update";
         Residence res = new Residence.Builder().copy(residence).setNumberOfRooms(3).setName("RES 3").build();
-        ResponseEntity<Residence> response = testRestTemplate.postForEntity(url, res, Residence.class);
+        ResponseEntity<Residence> response = testRestTemplate.withBasicAuth(USERNAME_ADMIN, PASSWORD_ADMIN).postForEntity(url, res, Residence.class);
         System.out.println("STATUS CODE: " + response.getStatusCode());
         System.out.println("BODY: " + response.getBody());                              //Body should be the residence we've updated
         Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -55,7 +58,7 @@ public class ResidenceControllerTest {
     @Test
     public void c_getResidence() {
         String url = baseURL + residence.getResidenceId();
-        ResponseEntity<Residence> response = testRestTemplate.getForEntity(url, Residence.class);
+        ResponseEntity<Residence> response = testRestTemplate.withBasicAuth(USERNAME_ADMIN, PASSWORD_ADMIN).getForEntity(url, Residence.class);
         System.out.println("STATUS CODE: " + response.getStatusCode());
         System.out.println("BODY: " + response.getBody());                               //Body should be the updated residence
         Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -67,7 +70,7 @@ public class ResidenceControllerTest {
         String url = baseURL + "all";
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, headers);
-        ResponseEntity<String> response = testRestTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+        ResponseEntity<String> response = testRestTemplate.withBasicAuth(USERNAME_ADMIN, PASSWORD_ADMIN).exchange(url, HttpMethod.GET, entity, String.class);
         System.out.println("STATUS CODE: " + response.getStatusCode());
         System.out.println("BODY: " + response.getBody());                               //Body should be an array of residences
         Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -78,7 +81,7 @@ public class ResidenceControllerTest {
         String url = baseURL + "delete/" + residence.getResidenceId();
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, headers);
-        ResponseEntity<String> response = testRestTemplate.exchange(url, HttpMethod.DELETE, entity, String.class);
+        ResponseEntity<String> response = testRestTemplate.withBasicAuth(USERNAME_ADMIN, PASSWORD_ADMIN).exchange(url, HttpMethod.DELETE, entity, String.class);
         System.out.println("STATUS CODE: " + response.getStatusCode());
         System.out.println("BODY: " + response.getBody());                               //Body should be true or false
         Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
