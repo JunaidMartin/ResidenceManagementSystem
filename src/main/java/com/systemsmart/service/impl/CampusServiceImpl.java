@@ -54,20 +54,30 @@ public class CampusServiceImpl implements CampusService {
     }
 
     @Override
-    public Campus read(String c) {
+    public Campus read(String s) {
+        return null;
+    }
+
+
+    public Campus read(int c) {
         return this.repository.findById(c).orElseGet(null);
     }
 
     @Override
     public Campus update(Campus campus) {
-        if (this.repository.existsById(campus.toString())){
+        if (this.repository.existsById(campus.getCampusId())){
             return this.repository.save(campus);
         }
         return null;
     }
 
     @Override
-    public boolean delete(String c) {
+    public boolean delete(String s) {
+        return false;
+    }
+
+
+    public boolean delete(int c) {
         this.repository.deleteById(c);
         if(this.repository.existsById(c)) return false;
         return true;
