@@ -2,7 +2,6 @@ package com.systemsmart.controller;
 
 import com.systemsmart.entity.Student;
 import com.systemsmart.factory.StudentFactory;
-import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -75,7 +74,6 @@ public class StudentControllerTest {
     }
 
     @Test
-
     public void e_delete() {
         String iD = "123456789";
         String url = baseURL + "read/" + iD;
