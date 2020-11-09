@@ -75,6 +75,7 @@ public class StudentControllerTest {
     }
 
     @Test
+    @Ignore
     public void e_delete() {
         String iD = "123456789";
         String url = baseURL + "read/" + iD;
