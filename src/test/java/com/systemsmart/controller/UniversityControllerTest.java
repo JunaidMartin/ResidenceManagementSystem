@@ -28,7 +28,7 @@ import static org.junit.Assert.*;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class UniversityControllerTest {
 
-    private static University university = UniversityFactory.createUniversity("CPUT");
+    private static University university = UniversityFactory.createUniversity(1, "Cape Peninsula University of Technology");
     private static String SECURITY_USERNAME = "admin";
     private static String SECURITY_PASSWORD = "admin123";
 
@@ -46,7 +46,7 @@ public class UniversityControllerTest {
         assertNotNull(postResponse.getBody());
         university = postResponse.getBody();
         System.out.println("Saved data:" + university);
-        assertEquals(university.getUniversityName(), postResponse.getBody().getUniversityName());
+        assertEquals(university.getUniversityId(), postResponse.getBody().getUniversityId());
     }
 
     @Test
@@ -62,7 +62,7 @@ public class UniversityControllerTest {
 
     @Test
     public void b_read(){
-        String url = baseURL + "read/" + university.getUniversityName();
+        String url = baseURL + "read/" + university.getUniversityId();
         System.out.println("URL: " + url);
         ResponseEntity<University> response = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).getForEntity(url, University.class);
         System.out.println(response);
@@ -78,12 +78,13 @@ public class UniversityControllerTest {
         System.out.println("URL: " + url);
         System.out.println("Post date: " + updated);
         ResponseEntity<University> response = restTemplate.withBasicAuth(SECURITY_USERNAME,SECURITY_PASSWORD).postForEntity(url, updated, University.class);
-        //assertEquals(university.getUniversityName(), response.getBody().getUniversityName());
+        assertEquals(university.getUniversityId(), response.getBody().getUniversityId());
     }
+
     @Test
     @Ignore
     public void e_delete() {
-        String url = baseURL + "delete/" +university.getUniversityName();
+        String url = baseURL + "delete/" + university.getUniversityId();
         System.out.println("URL: " + url);
         restTemplate.withBasicAuth(SECURITY_USERNAME,SECURITY_PASSWORD).delete(url);
     }

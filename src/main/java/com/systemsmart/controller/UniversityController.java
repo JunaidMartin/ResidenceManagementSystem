@@ -24,12 +24,12 @@ public class UniversityController {
     //@RequestMapping(value = "/create", method = RequestMethod.POST)
     @PostMapping("/create")
     public University create(@RequestBody University university){
-        University newUniversity = UniversityFactory.createUniversity(university.getUniversityName());
+        University newUniversity = UniversityFactory.createUniversity(university.getUniversityId(), university.getUniversityName());
         return universityService.create(newUniversity);
     }
 
     @GetMapping("/read/{id}")
-    public University read(@PathVariable String id){
+    public University read(@PathVariable int id){
         return universityService.read(id);
     }
 
@@ -44,7 +44,7 @@ public class UniversityController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public boolean delete(@PathVariable String id){
+    public boolean delete(@PathVariable int id){
         return universityService.delete(id);
     }
 }

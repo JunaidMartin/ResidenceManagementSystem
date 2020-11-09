@@ -12,7 +12,8 @@ import javax.persistence.Id;
 @Entity
 public class University implements Serializable {
 
-   @Id
+    @Id
+    private int universityId;
     private String universityName;
 
     protected University(){
@@ -20,8 +21,12 @@ public class University implements Serializable {
     }
 
     private University (Builder builder){
-
+        this.universityId = builder.universityId;
         this.universityName = builder.universityName;
+    }
+
+    public int getUniversityId() {
+        return universityId;
     }
 
     public String getUniversityName() {
@@ -31,13 +36,19 @@ public class University implements Serializable {
     @Override
     public String toString() {
         return "University{" +
-                "universityName='" + universityName + '\'' +
+                "universityId=" + universityId +
+                ", universityName='" + universityName + '\'' +
                 '}';
     }
 
     public static class Builder{
-
+        private int universityId;
         private String universityName;
+
+        public Builder setUniversityId(int universityId) {
+            this.universityId = universityId;
+            return this;
+        }
 
         public Builder setUniversityName(String universityName){
             this.universityName = universityName;
@@ -45,7 +56,7 @@ public class University implements Serializable {
         }
 
         public Builder copy(University university){
-
+            this.universityId = university.universityId;
             this.universityName = university.universityName;
             return this;
         }
