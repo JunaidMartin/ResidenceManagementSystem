@@ -26,7 +26,7 @@ public class StudentControllerTest {
     private static Student student = StudentFactory.buildStudent("123456789", "Yusrahhh", "Essop",
             "CPUT District Six Campus", 1023456789123L, "123456789@mycput.ac.za", "0123456789");
     private static String SECURITY_USERNAME = "student";
-    private static String SECURITY_PASSWORD = "stud123";
+    private static String SECURITY_PASSWORD = "student123";
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -76,10 +76,7 @@ public class StudentControllerTest {
 
     @Test
     public void e_delete() {
-        String iD = "123456789";
-        String url = baseURL + "read/" + iD;
-        System.out.println("URL: " + url);
-        url = baseURL + "delete/" + iD;
+        String url = baseURL + "delete/" + student.getStudNum();
         System.out.println("URL: " + url);
         System.out.println();
         restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).delete(url);
