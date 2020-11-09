@@ -7,6 +7,7 @@ package com.systemsmart.controller;
 import com.systemsmart.entity.Facility;
 import com.systemsmart.factory.FacilityFactory;
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
@@ -32,16 +33,20 @@ public class  FacilityControllerTest {
     private TestRestTemplate restTemplate;
     private String baseURL = "http://localhost:8080/facility/";
     private static  Facility facility = FacilityFactory.createFacility("234555",true,true,true,
-            true,true,true,true,"pre-paid electricity meter");;
+            true,true,true,true,"pre-paid electricity meter");
+
+    private static String SECURITY_USERNAME = "student";
+    private static String SECURITY_PASSWORD = "stud123";
 
     @Test
     public void a_create() {
 
         String url = baseURL + "create";
         System.out.println(url);
-        ResponseEntity<Facility> postResponse = restTemplate.postForEntity(url,facility,Facility.class);
+        ResponseEntity<Facility> postResponse = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).postForEntity(url,facility,Facility.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
+       // facility = postResponse.getBody();
         System.out.println("Created create "+postResponse.getBody());
     }
 
@@ -51,7 +56,7 @@ public class  FacilityControllerTest {
         System.out.println(url);
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null,headers);
-        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+        ResponseEntity<String> response = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).exchange(url, HttpMethod.GET, entity, String.class);
         System.out.println("Get All "+response.getBody());
 
     }
@@ -61,7 +66,7 @@ public class  FacilityControllerTest {
 
         String url = baseURL + "read/" + facility.getFacilityId();
         System.out.println("URL: " + url);
-        ResponseEntity<Facility> response = restTemplate.getForEntity(url, Facility.class);
+        ResponseEntity<Facility> response = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).getForEntity(url, Facility.class);
         System.out.println("Read "+response.getBody());
 
     }
@@ -73,17 +78,18 @@ public class  FacilityControllerTest {
         String url = baseURL + "update";
         System.out.println("URL: "+ url);
         System.out.println("Post data: "+ facilityUpdated);
-        ResponseEntity<Facility> response = restTemplate.postForEntity(url, facilityUpdated, Facility.class);
+        ResponseEntity<Facility> response = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).postForEntity(url, facilityUpdated, Facility.class);
         facility = response.getBody();
         System.out.println("Updated data: "+ response.getBody());
-        assertEquals(facility.getFacilityId(),response.getBody().getFacilityId());
+       assertEquals(facility.getFacilityId(),response.getBody().getFacilityId());
     }
 
     @Test
+    @Ignore
     public void e_delete() {
 
         String url = baseURL + "delete/" + facility.getFacilityId();
         System.out.println("URL: " + url);
-        restTemplate.delete(url);
+        restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).delete(url);
     }
 }
