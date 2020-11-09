@@ -21,13 +21,13 @@ public class UniversityServiceImpl implements UniversityService {
     //private static UniversityService service = null;
     private UniversityRepository repository;
 
-  //  private UniversityServiceImpl(){
-  //      this.repository = UniversityRepositoryImpl.getRepository();
+    //  private UniversityServiceImpl(){
+    //      this.repository = UniversityRepositoryImpl.getRepository();
     //}
 
     //public static UniversityService getService(){
-      //  if (service == null) service = new UniversityServiceImpl();
-        //return service;
+    //  if (service == null) service = new UniversityServiceImpl();
+    //return service;
     //}
 
     @Override
@@ -35,17 +35,17 @@ public class UniversityServiceImpl implements UniversityService {
         return this.repository.findAll().stream().collect(Collectors.toSet());
     }
 
-   // @Override
-  //  public Set<University> getUniversityWithUniversityNameCPUT() {
-   //     Set<University> universities = getAll();
-   //     Set<University> universitiesWithCPUT = new HashSet<>();
+    // @Override
+    //  public Set<University> getUniversityWithUniversityNameCPUT() {
+    //     Set<University> universities = getAll();
+    //     Set<University> universitiesWithCPUT = new HashSet<>();
     //    for (University university : universities) {
     //        if (university.getUniversityName().trim().startsWith("CPUT")){
-     //           universitiesWithCPUT.add(university);
-     //       }
+    //           universitiesWithCPUT.add(university);
+    //       }
     //    }
     //    return universitiesWithCPUT;
-   // }
+    // }
 
     @Override
     public University create(University university) {
@@ -53,22 +53,23 @@ public class UniversityServiceImpl implements UniversityService {
     }
 
     @Override
-    public University read(String u) {
+    public University read(Integer u) {
         return this.repository.findById(u).orElseGet(null);
     }
 
     @Override
     public University update(University university) {
-        if (this.repository.existsById(university.getUniversityName())){
+        if (this.repository.existsById(university.getUniversityId())){
             return this.repository.save(university);
         }
         return null;
     }
 
     @Override
-    public boolean delete(String u) {
+    public boolean delete(Integer u) {
         this.repository.deleteById(u);
         if(this.repository.existsById(u)) return false;
         return true;
     }
+
 }

@@ -11,5 +11,5 @@ import org.springframework.stereotype.Repository;
 import java.util.Set;
 
 @Repository
-public interface CampusRepository extends JpaRepository<Campus, String> {
+public interface CampusRepository extends JpaRepository<Campus, Integer> {
 }

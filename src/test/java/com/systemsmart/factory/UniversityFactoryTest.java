@@ -14,8 +14,7 @@ public class UniversityFactoryTest {
 
     @Test
     public void createUniversity() {
-        University university = UniversityFactory.createUniversity("CPUT");
-
-        Assert.assertEquals("CPUT", university.getUniversityName());
+        University university = UniversityFactory.createUniversity(1, "Cape Peninsula University of Technology");
+        Assert.assertEquals("Cape Peninsula University of Technology", university.getUniversityName());
     }
 }

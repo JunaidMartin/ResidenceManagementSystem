@@ -29,6 +29,9 @@ public class ComplaintControllerTest extends TestCase {
 
     private static Complaint complaint = ComplaintFactory.logComplaint(2211, "The room i've booked is not the same as the one i see on the system", "processing");
 
+    private static String SECURITY_USERNAME = "student";
+    private static String SECURITY_PASSWORD = "stud123";
+
     @Autowired
     private TestRestTemplate restTemplate;
     private String baseURL = "http://localhost:8080/complaint/";
@@ -38,7 +41,7 @@ public class ComplaintControllerTest extends TestCase {
         String url = baseURL + "create";
         System.out.println("URL:" + url);
         System.out.println("Post date:" + complaint);
-        ResponseEntity<Complaint> postResponse = restTemplate.postForEntity(url, complaint, Complaint.class);
+        ResponseEntity<Complaint> postResponse = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).postForEntity(url, complaint, Complaint.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
         complaint = postResponse.getBody();
@@ -50,7 +53,7 @@ public class ComplaintControllerTest extends TestCase {
     public void testRead() {
         String url = baseURL + "read/" + complaint.getComplaintID();
         System.out.println("URL: " + url);
-        ResponseEntity<Complaint> response = restTemplate.getForEntity(url, Complaint.class);
+        ResponseEntity<Complaint> response = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).getForEntity(url, Complaint.class);
 
     }
     @Test
@@ -60,7 +63,7 @@ public class ComplaintControllerTest extends TestCase {
         System.out.println("URL: " + url);
         System.out.println("Previous ID: " + complaint.getComplaintID());
         System.out.println("New ID: " + updated.getComplaintID());
-        ResponseEntity<Complaint> response = restTemplate.postForEntity(url, updated, Complaint.class);
+        ResponseEntity<Complaint> response = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).postForEntity(url, updated, Complaint.class);
 
     }
 
@@ -70,7 +73,7 @@ public class ComplaintControllerTest extends TestCase {
         System.out.println("URL: " + url);
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, headers);
-        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+        ResponseEntity<String> response = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).exchange(url, HttpMethod.GET, entity, String.class);
         System.out.println(response);
         System.out.println(response.getBody());
     }
@@ -79,6 +82,6 @@ public class ComplaintControllerTest extends TestCase {
     public void testDelete() {
         String url = baseURL + "delete/" +complaint.getComplaintID();
         System.out.println("URL: " + url);
-        restTemplate.delete(url);
+        restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).delete(url);
     }
 }

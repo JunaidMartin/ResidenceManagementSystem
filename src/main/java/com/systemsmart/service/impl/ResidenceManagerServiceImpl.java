@@ -48,7 +48,7 @@ public class ResidenceManagerServiceImpl implements ResidenceManagerService {
         return this.repository.findAll().stream().collect(Collectors.toSet());
     }
 
-  //  @Override
+    //  @Override
 //    public Set<ResidenceManager> getManagerSurname() {
 //        Set<ResidenceManager> residenceManager = retrieve();
 //        Set<ResidenceManager> managerSurname = new HashSet<>();
