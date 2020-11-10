@@ -13,6 +13,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/facility")
+@CrossOrigin(origins = "http://localhost:6677", allowCredentials = "true")
 public class FacilityController {
 
     @Autowired

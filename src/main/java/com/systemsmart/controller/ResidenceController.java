@@ -15,7 +15,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/residence")
-@CrossOrigin("http://localhost:6677")
+@CrossOrigin(origins = "http://localhost:6677", allowCredentials = "true")
 public class ResidenceController {
 
     @Autowired

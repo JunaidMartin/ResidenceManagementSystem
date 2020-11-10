@@ -10,6 +10,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/complaint")
+@CrossOrigin(origins = "http://localhost:6677", allowCredentials = "true")
 public class ComplaintController {
 
     /*
