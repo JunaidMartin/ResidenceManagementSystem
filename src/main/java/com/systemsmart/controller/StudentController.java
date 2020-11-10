@@ -10,6 +10,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/student")
+@CrossOrigin(origins = "http://localhost:6677", allowCredentials = "true")
 public class StudentController {
 
     @Autowired
