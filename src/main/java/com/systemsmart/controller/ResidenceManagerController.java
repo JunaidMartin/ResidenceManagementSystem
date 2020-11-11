@@ -10,7 +10,6 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/manager")
-@CrossOrigin(origins = "http://localhost:6677", allowCredentials = "true")
 public class ResidenceManagerController {
 
     /*

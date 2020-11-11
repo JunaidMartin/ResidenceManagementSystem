@@ -10,7 +10,6 @@ import java.util.Set;
 
 @RestController
 @RequestMapping ("/systemsmart/address")
-@CrossOrigin(origins = "http://localhost:6677", allowCredentials = "true")
 public class AddressController {
 
     @Autowired
