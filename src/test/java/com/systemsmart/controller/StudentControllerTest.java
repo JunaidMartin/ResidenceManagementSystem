@@ -23,10 +23,11 @@ import static org.junit.Assert.*;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class StudentControllerTest {
 
-    private static Student student = StudentFactory.buildStudent("123456789", "Yusrahhh", "Essop",
-            "CPUT District Six Campus", 1023456789123L, "123456789@mycput.ac.za", "0123456789");
-    private static String SECURITY_USERNAME = "student";
-    private static String SECURITY_PASSWORD = "student123";
+    private static Student student = StudentFactory.buildStudent("123456789", "Junaid", "Martin",
+            "Male", "10-Jul-1997", 1234567890123L, "English",
+            "0798159723", 1, "123456789@mycput.ac.za", 6);
+    private static String SECURITY_USERNAME = "admin";
+    private static String SECURITY_PASSWORD = "admin123";
 
     @Autowired
     private TestRestTemplate restTemplate;
