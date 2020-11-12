@@ -8,16 +8,21 @@ Date: 05/07
 */
 public class StudentFactory {
 
-    public static Student buildStudent(String studNum, String firstName, String lastName,
-                                       String campus, long identityNum, String studEmail, String contactNum){
+    public static Student buildStudent(String studNum, String firstName, String lastName, String gender,
+                                       String dob, long identityNum, String homeLanguage,  String contactNum,
+                                       int campusId,  String studEmail, int resId){
         Student student = new Student.Builder()
                 .setStudNum(studNum)
                 .setFirstName(firstName)
                 .setLastName(lastName)
-                .setCampus(campus)
+                .setGender(gender)
+                .setDob(dob)
                 .setIdentityNum(identityNum)
-                .setStudEmail(studEmail)
+                .setHomeLanguage(homeLanguage)
                 .setContactNum(contactNum)
+                .setCampusId(campusId)
+                .setStudEmail(studEmail)
+                .setResId(resId)
                 .build();
         return student;
     }

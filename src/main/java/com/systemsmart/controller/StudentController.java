@@ -18,7 +18,10 @@ public class StudentController {
     //@RequestMapping(value = "/create", method = RequestMethod.POST)
     @PostMapping ("/create")
     public Student create(@RequestBody Student student){
-        Student newStudent = StudentFactory.buildStudent(student.getStudNum(), student.getFirstName(), student.getLastName(), student.getCampus(), student.getIdentityNum(), student.getContactNum(), student.getStudEmail());
+        Student newStudent = StudentFactory.buildStudent(student.getStudNum(), student.getFirstName(),
+                student.getLastName(), student.getGender(), student.getDob(), student.getIdentityNum(),
+                student.getHomeLanguage(), student.getContactNum(), student.getCampusId(), student.getStudEmail(),
+                student.getResId());
         return studentService.create(newStudent);
     }
 

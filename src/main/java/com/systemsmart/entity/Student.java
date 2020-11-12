@@ -13,11 +13,11 @@ Date: 05/07
 public class Student implements Serializable {
     @Id
     private String studNum;
-    private String firstName, lastName;
-    private String campus;
+    private String firstName, lastName, gender, dob;
     private long identityNum;
+    private String homeLanguage, contactNum;
+    private int campusId, resId;
     private String studEmail;
-    private String contactNum;
 
     protected Student(){}
 
@@ -25,22 +25,30 @@ public class Student implements Serializable {
         this.studNum = builder.studNum;
         this.firstName = builder.firstName;
         this.lastName = builder.lastName;
-        this.campus = builder.campus;
+        this.gender = builder.gender;
+        this.dob = builder.dob;
         this.identityNum = builder.identityNum;
-        this.studEmail = builder.studEmail;
+        this.homeLanguage = builder.homeLanguage;
         this.contactNum = builder.contactNum;
+        this.campusId = builder.campusId;
+        this.studEmail = builder.studEmail;
+        this.resId = builder.resId;
     }
 
     @Override
     public String toString() {
         return "Student{" +
-                "StudNum"+ studNum +
-                ", firstName=" + firstName +
-                ", lastName=" + lastName +
-                ", campus=" + campus +
+                "studNum='" + studNum + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", gender='" + gender + '\'' +
+                ", dob='" + dob + '\'' +
                 ", identityNum=" + identityNum +
-                ", studEmail=" + studEmail +
-                ", contactNum=" + contactNum + '\'' +
+                ", homeLanguage='" + homeLanguage + '\'' +
+                ", contactNum='" + contactNum + '\'' +
+                ", campusId=" + campusId +
+                ", studEmail='" + studEmail + '\'' +
+                ", resId='" + resId + '\'' +
                 '}';
     }
 
@@ -54,8 +62,15 @@ public class Student implements Serializable {
     public String getLastName() {
         return lastName;
     }
-    public String getCampus() {
-        return campus;
+    public String getGender(){return gender;}
+    public String getDob() {
+        return dob;
+    }
+    public String getHomeLanguage() {
+        return homeLanguage;
+    }
+    public int getCampusId() {
+        return campusId;
     }
     public long getIdentityNum() {
         return identityNum;
@@ -66,16 +81,21 @@ public class Student implements Serializable {
     public String getContactNum() {
         return contactNum;
     }
+    public int getResId() {return resId;}
 
     //Builder Class
     public static class Builder{
         private String studNum;
         private String firstName;
         private String lastName;
-        private String campus;
+        private String gender;
+        private String dob;
         private long identityNum;
-        private String studEmail;
         private String contactNum;
+        private String homeLanguage;
+        private int campusId;
+        private String studEmail;
+        private int resId;
 
         public Builder setStudNum (String studNum){
             this.studNum = studNum;
@@ -89,8 +109,20 @@ public class Student implements Serializable {
             this.lastName = lastName;
             return this;
         }
-        public Builder setCampus (String campus){
-            this.campus = campus;
+        public Builder setGender(String gender) {
+            this.gender = gender;
+            return this;
+        }
+        public Builder setDob(String dob) {
+            this.dob = dob;
+            return this;
+        }
+        public Builder setHomeLanguage(String homeLanguage) {
+            this.homeLanguage = homeLanguage;
+            return this;
+        }
+        public Builder setCampusId (int campusId){
+            this.campusId = campusId;
             return this;
         }
         public Builder setIdentityNum (long identityNum){
@@ -105,21 +137,28 @@ public class Student implements Serializable {
             this.contactNum = contactNum;
             return this;
         }
+        public Builder setResId(int resId) {
+            this.resId = resId;
+            return this;
+        }
 
         public Builder copy(Student student){
             this.studNum = student.studNum;
             this.firstName = student.firstName;
             this.lastName = student.lastName;
-            this.campus = student.campus;
+            this.gender = student.gender;
+            this.dob = student.dob;
             this.identityNum = student.identityNum;
-            this.studEmail = student.studEmail;
+            this.homeLanguage = student.homeLanguage;
             this.contactNum = student.contactNum;
+            this.campusId = student.campusId;
+            this.studEmail = student.studEmail;
+            this.resId = student.resId;
             return this;
         }
 
         public Student build(){
             return new Student(this);
         }
-
     }
 }
