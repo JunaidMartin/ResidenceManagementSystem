@@ -10,5 +10,5 @@ import java.util.Set;
 public interface CampusService extends IService <Campus, String> {
     Set<Campus> getAll();
     // unique business logic as per student.
-    Set<Campus> getCampusesWithCampusID217();
+   // Set<Campus> getCampusesWithCampusID217();
 }

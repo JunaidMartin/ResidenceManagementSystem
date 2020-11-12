@@ -1,3 +1,4 @@
+/*
 package com.systemsmart.service.impl;
 
 import com.systemsmart.entity.Student;
@@ -11,10 +12,12 @@ import org.junit.runners.MethodSorters;
 import java.util.Set;
 
 import static org.junit.Assert.*;
+*/
 /*
  * Author: Junaid Martin <216178606@mycput.ac.za>
  * Date: 07 September 2020
- */
+ *//*
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class StudentServiceImplTest {
 
@@ -53,10 +56,9 @@ public class StudentServiceImplTest {
     public void f_delete() {
         boolean deleted = service.delete(student.getStudNum());
         Assert.assertTrue(deleted);
-
     }
 
     @Test
     public void e_getStudentsWithStudentNumbers216() {
     }
-}
+}*/

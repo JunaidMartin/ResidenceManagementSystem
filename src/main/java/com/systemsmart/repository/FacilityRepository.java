@@ -1,9 +1,11 @@
 package com.systemsmart.repository;
 
 import com.systemsmart.entity.Facility;
-import java.util.Set;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface FacilityRepository extends IRepository<Facility, String> {
 
-    Set<Facility> getAll();
+@Repository
+public interface FacilityRepository extends JpaRepository<Facility, String> {
+
 }

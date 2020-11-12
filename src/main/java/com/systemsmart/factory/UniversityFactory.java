@@ -7,9 +7,9 @@ Description: Domain class description
 import com.systemsmart.entity.University;
 
 public class UniversityFactory {
-    public static University createUniversity(String universityName){
+    public static University createUniversity(int universityId, String universityName){
         University university = new University.Builder()
-
+                .setUniversityId(universityId)
                 .setUniversityName(universityName)
                 .build();
         return university;

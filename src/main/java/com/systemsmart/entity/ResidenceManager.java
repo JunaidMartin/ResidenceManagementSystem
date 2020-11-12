@@ -1,16 +1,26 @@
 package com.systemsmart.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.io.Serializable;
+import java.util.Objects;
+
 /*  Author: Christ Kitenge Mbuyi <217248756@mycput.ac.za>
     Description: This class specifies the attributes of the Residence Manager entity using builder pattern
     Date: 05 July 2020
 */
+@Entity
+public class ResidenceManager implements Serializable {
 
-public class ResidenceManager {
-
-
-    private long employeeId;
-    private String firstName, lastName, employmentDate, residenceName;
+    @Id
+    private int employeeId;
+    private String firstName;
+    private String lastName;
+    private String employmentDate;
+    private String residenceName;
     private int accessLevel;
+
+    protected ResidenceManager(){}
 
     // Constructor
     public ResidenceManager(Builder builder)
@@ -25,7 +35,7 @@ public class ResidenceManager {
     }
 
     // Getters
-    public long getEmployeeId()
+    public int getEmployeeId()
     {
         return employeeId;
     }
@@ -69,11 +79,11 @@ public class ResidenceManager {
 
     // Builder Class
     public static class Builder {
-        private long employeeId;
+        private int employeeId;
         private String firstName, lastName, employmentDate, residenceName;
         private int accessLevel;
 
-        public Builder setEmployeeId(long employeeId)
+        public Builder setEmployeeId(int employeeId)
         {
             this.employeeId = employeeId;
             return this;
@@ -124,5 +134,18 @@ public class ResidenceManager {
         {
             return new ResidenceManager(this);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ResidenceManager that = (ResidenceManager) o;
+        return employeeId == that.employeeId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(employeeId);
     }
 }

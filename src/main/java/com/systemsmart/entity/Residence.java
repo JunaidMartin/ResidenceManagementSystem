@@ -1,14 +1,24 @@
 package com.systemsmart.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.io.Serializable;
+import java.util.Objects;
+
 /* Author: Brandon Eugene Charles <218220065@mycput.ac.za>
 Description: Residence Entity.
 Date: 05/07
 */
-public class Residence {
+@Entity
+public class Residence implements Serializable {
 
+    @Id
     private int residenceId;
     private int roomsAvailable;
     private String residenceName;
+
+    protected Residence(){}
 
     public Residence(Builder builder) {
         this.residenceId =  builder.residenceId;
@@ -31,10 +41,23 @@ public class Residence {
     @Override
     public String toString() {
         return "Residence{" +
-                "residenceId"+ residenceId +
-                "roomsAvailable=" + roomsAvailable +
+                "residenceId="+ residenceId +
+                ", roomsAvailable=" + roomsAvailable +
                 ", residenceName=" + residenceName + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Residence residence = (Residence) o;
+        return residenceId == residence.residenceId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(residenceId);
     }
 
     public static class Builder{

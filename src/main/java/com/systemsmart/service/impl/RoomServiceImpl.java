@@ -1,35 +1,30 @@
 package com.systemsmart.service.impl;
 //216279631 Mzileni Inga
+
 import com.systemsmart.entity.Room;
 import com.systemsmart.repository.RoomRepository;
 import com.systemsmart.service.RoomService;
-
-import java.util.HashSet;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import java.util.Set;
+import java.util.HashSet;
+import java.util.stream.Collectors;
 
+@Service
 public class RoomServiceImpl implements RoomService {
 
-    private RoomService repository;
-    private static RoomService service = null;
+    @Autowired
+    private RoomRepository repository;
 
 
-    private  RoomServiceImpl(){
-        RoomRepository.getRepository();
-
-    }
-    public static RoomService getService(){
-        if(service == null) service  = new com.systemsmart.service.impl.RoomServiceImpl();
-        return service;
-
-    }
 
     @Override
     public Set<Room> getAll() {
-        return this.getAllStatingWithA();
+        return this.repository.findAll().stream().collect(Collectors.toSet());
     }
 
     @Override
-    public Set<Room> getAllStatingWithA() {
+    public Set<Room> getRoomService() {
         Set<Room> room = getAll();
         for (Room rooms : room)
             if (room.toString().trim().startsWith("100")) {
@@ -39,26 +34,31 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public Room create(Room t) {
-        return this.repository.create(t);
+    public Room create(Room room) {
+        return this.repository.save(room);
     }
 
 
     @Override
     public Room read(String s) {
-        return this.repository.read(s);
+        return this.repository.findById(s).orElseGet(null);
 
     }
 
 
     @Override
-    public Room update(Room t) {
-        return this.repository.update(t);
+    public  Room update(Room room) {
+        if (this.repository.existsById(Long.toString(room.getRoomNumber()))){
+            return this.repository.save(room);
+        }
+        return null;
     }
 
     @Override
     public boolean delete(String s) {
-        return this.repository.delete(s);
+        this.repository.deleteById(s);
+        if (this.repository.existsById(s)) return false;
+        else return true;
     }
 }
 

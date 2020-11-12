@@ -1,17 +1,24 @@
 package com.systemsmart.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.io.Serializable;
+import java.util.Objects;
+
 /*  Author: Christ Kitenge Mbuyi <217248756@mycput.ac.za>
     Description: This class specifies the attributes of the Complaint entity using builder pattern
     Date: 05 July 2020
 */
-public class Complaint {
+@Entity
+public class Complaint implements Serializable {
 
 
-
+    @Id
     private long complaintID;
     private String description;
     private String logStatus;
 
+    protected Complaint(){}
 
     //constructor
     public Complaint(Builder builder) {
@@ -84,5 +91,18 @@ public class Complaint {
         }
 
 
+    }
+
+        @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Complaint complaint = (Complaint) o;
+        return complaintID == complaint.complaintID;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(complaintID);
     }
 }

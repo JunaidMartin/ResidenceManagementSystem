@@ -2,14 +2,22 @@ package com.systemsmart.entity;
 
 //  Author:  Inga Mzileni <216279631@mycput.ac.za>
 
-public class Room {
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.io.Serializable;
+import java.util.Objects;
+
+@Entity
+public class Room implements Serializable {
+    @Id
     private long roomNumber;
     private String  type;
     private int price;
     private boolean status;
 
-    public Room(){
-        Room builder = null;
+    protected  Room(){}
+
+    public Room(Builder builder){
         this.roomNumber = builder.roomNumber;
         this.price = builder.price;
         this.type = builder.type;
@@ -77,14 +85,23 @@ public class Room {
         }
 
         public Room build(){
-            return new Room();
+            return new Room(this);
         }
 
-
-        public Builder() {
-        }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Room room = (Room) o;
+        return roomNumber == room.roomNumber;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(roomNumber);
+    }
 }
 
 

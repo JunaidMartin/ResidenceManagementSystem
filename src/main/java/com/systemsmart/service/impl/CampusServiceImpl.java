@@ -5,60 +5,81 @@ Description: Domain class description
 * Date: 05/07/2020*/
 
 import com.systemsmart.entity.Campus;
+import com.systemsmart.entity.Student;
 import com.systemsmart.repository.CampusRepository;
-import com.systemsmart.repository.impl.CampusRepositoryImpl;
+//import com.systemsmart.repository.impl.CampusRepositoryImpl;
 import com.systemsmart.service.CampusService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
+@Service
 public class CampusServiceImpl implements CampusService {
-    private static CampusService service = null;
+    @Autowired
     private CampusRepository repository;
 
-    private CampusServiceImpl(){
-        this.repository = CampusRepositoryImpl.getRepository();
-    }
+   // private CampusServiceImpl(){
+   //     this.repository = CampusRepositoryImpl.getRepository();
+    //}
 
-    public static CampusService getService(){
-        if (service == null) service = new CampusServiceImpl();
-        return service;
-    }
+ //   public static CampusService getService(){
+   //     if (service == null) service = new CampusServiceImpl();
+     //   return service;
+   // }
 
     @Override
     public Set<Campus> getAll() {
-        return this.repository.getAll();
+        return this.repository.findAll().stream().collect(Collectors.toSet());
     }
 
-    @Override
-    public Set<Campus> getCampusesWithCampusID217() {
-        Set<Campus> campuses = getAll();
-        Set<Campus> campusWith217 = new HashSet<>();
-        for (Campus campus : campuses) {
-            if (campus.getCampusId() == 217){
-                campusWith217.add(campus);
-            }
-        }
-        return campusWith217;
-    }
+
+   // @Override
+   // public Set<Campus> getCampusesWithCampusID217() {
+   //     Set<Campus> campuses = getAll();
+    //    Set<Campus> campusWith217 = new HashSet<>();
+    //    for (Campus campus : campuses) {
+     //       if (campus.getCampusId() == 217){
+     //           campusWith217.add(campus);
+     //       }
+     //   }
+    //    return campusWith217;
+   // }
 
     @Override
     public Campus create(Campus campus) {
-        return this.repository.create(campus);
+        return this.repository.save(campus);
     }
 
     @Override
-    public Campus read(String c) {
-        return this.repository.read(c);
+    public Campus read(String s) {
+        return null;
+    }
+
+
+    public Campus read(int c) {
+        return this.repository.findById(c).orElseGet(null);
     }
 
     @Override
     public Campus update(Campus campus) {
-        return this.repository.update(campus);
+        if (this.repository.existsById(campus.getCampusId())){
+            return this.repository.save(campus);
+        }
+        return null;
     }
 
     @Override
-    public boolean delete(String c) {
-        return this.repository.delete(c);
+    public boolean delete(String s) {
+        return false;
+    }
+
+
+    public boolean delete(int c) {
+        this.repository.deleteById(c);
+        if(this.repository.existsById(c)) return false;
+        return true;
     }
 }

@@ -2,11 +2,14 @@ package com.systemsmart.service.impl;
 
 import com.systemsmart.entity.Complaint;
 import com.systemsmart.repository.ComplaintRepository;
-import com.systemsmart.repository.impl.ComplaintRepositoryImpl;
 import com.systemsmart.service.ComplaintService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
+@Service
 public class ComplaintServiceImpl implements ComplaintService {
 
     /*
@@ -16,41 +19,54 @@ public class ComplaintServiceImpl implements ComplaintService {
      */
 
     private static ComplaintService service = null;
+    @Autowired
     private ComplaintRepository repository;
 
-    private ComplaintServiceImpl(){
 
-        this.repository = ComplaintRepositoryImpl.getRepository();
-    }
-
-    public static ComplaintService getService(){
-        if (service == null) service = new ComplaintServiceImpl();
-        return service;
-    }
     @Override
     public Complaint create(Complaint c) {
-        return this.repository.create(c);
+        return this.repository.save(c);
     }
 
     @Override
     public Complaint read(String r) {
-        return this.repository.read(r);
+        return this.repository.findById(r).orElseGet(null);
     }
 
     @Override
     public Complaint update(Complaint u) {
-        return this.repository.update(u);
+
+        if (this.repository.existsById(u.getLogStatus())){
+            return this.repository.save(u);
+        }
+        return null;
     }
 
     @Override
     public boolean delete(String d) {
-        return this.repository.delete(d);
+
+        this.repository.deleteById(d);
+        if (this.repository.existsById(d)) return false;
+        else return true;
     }
 
 
     @Override
     public Set<Complaint> retrieve() {
-        return this.repository.retrieve();
+        return this.repository.findAll().stream().collect(Collectors.toSet());
     }
+
+
+//        @Override
+//    public Set<Complaint> getProcessingComplaints() {
+//        Set<Complaint> complaints = retrieve();
+//        Set<Complaint> processingComplaint = new HashSet<>();
+//        for (Complaint complaint : complaints) {
+//            if (complaint.getLogStatus().trim().equalsIgnoreCase("processing")){
+//                processingComplaint.add(complaint);
+//            }
+//        }
+//        return processingComplaint;
+//    }
 }
 

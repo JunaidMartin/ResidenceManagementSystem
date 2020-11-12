@@ -1,21 +1,25 @@
 package com.systemsmart.entity;
 
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.io.Serializable;
 
 /* Author: @Junaid Martin <216178606@mycput.ac.za>
 Description: Student Entity to act as the end user of the system.
 Date: 05/07
 */
+@Entity
 public class Student implements Serializable {
+    @Id
     private String studNum;
-    private String firstName;
-    private String lastName;
+    private String firstName, lastName;
     private String campus;
     private long identityNum;
     private String studEmail;
     private String contactNum;
 
-    private Student(){}
+    protected Student(){}
 
     public Student(Builder builder) {
         this.studNum = builder.studNum;
