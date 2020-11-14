@@ -15,7 +15,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-
+import java.util.UUID;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @RunWith(SpringRunner.class)
@@ -27,10 +27,10 @@ public class ComplaintControllerTest extends TestCase {
      * Date: 23 September 2020
      */
 
-    private static Complaint complaint = ComplaintFactory.logComplaint(2211, "The room i've booked is not the same as the one i see on the system", "processing");
+    private static Complaint complaint = ComplaintFactory.logComplaint("Complaint", "There is a leak in the ceiling.", "", "");
 
-    private static String SECURITY_USERNAME = "student";
-    private static String SECURITY_PASSWORD = "stud123";
+    private static String SECURITY_USERNAME = "admin";
+    private static String SECURITY_PASSWORD = "admin123";
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -41,6 +41,14 @@ public class ComplaintControllerTest extends TestCase {
         String url = baseURL + "create";
         System.out.println("URL:" + url);
         System.out.println("Post date:" + complaint);
+        if (complaint.getLogStatus().equals(null)) {
+            complaint = new Complaint.Builder().copy(complaint).setLogStatus("Processing").build();
+        }
+        if (complaint.getNature().equals(null)) {
+            complaint = new Complaint.Builder().copy(complaint).setNature("Complaint").build();
+        }
+        complaint = new Complaint.Builder().copy(complaint).setNature("Complaint").setLogStatus("Processing").build();
+        System.out.println(complaint.toString());
         ResponseEntity<Complaint> postResponse = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).postForEntity(url, complaint, Complaint.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
@@ -58,7 +66,7 @@ public class ComplaintControllerTest extends TestCase {
     }
     @Test
     public void testUpdate() {
-        Complaint updated = new Complaint.Builder().copy(complaint).setComplaintID(2200).build();
+        Complaint updated = new Complaint.Builder().copy(complaint).setComplaintID("2200").build();
         String url = baseURL + "update";
         System.out.println("URL: " + url);
         System.out.println("Previous ID: " + complaint.getComplaintID());
