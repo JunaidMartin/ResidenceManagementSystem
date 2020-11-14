@@ -33,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .withUser("student")
                 .password(encoder().encode("stud123"))
-                .roles(ADMIN_ROLE, STUDENT_ROLE);
+                .roles(STUDENT_ROLE);
     }
 
     @Override
