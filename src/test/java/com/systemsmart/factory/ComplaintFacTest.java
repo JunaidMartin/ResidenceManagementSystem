@@ -14,32 +14,25 @@ import org.junit.Test;
 
 
 public class ComplaintFacTest {
-
     @Test
     public void ObjectEqualityTest() {
-
-        Complaint logComplaint = ComplaintFactory.logComplaint(2211, "The room i've booked is not the same as the one i see on the system", "processed");
-        Assert.assertEquals(2211, logComplaint.getComplaintID());
+        Complaint logComplaint = ComplaintFactory.logComplaint("Complaint", "There is a leak in the ceiling.", "Processing", "Hi, I will sort the problem out by this coming Wednesday. Thanks");
+        Assert.assertEquals("Complaint", logComplaint.getNature());
     }
-
 
     @Test
     public void timeoutNotExceededTest()
     {
-
         /*assertTimeout(ofMinutes(2), () -> {
             // Perform task that takes less than 2 minutes.
         });*/
     }
 
-
-
     @Ignore
     @Test
     public void testDisabled(){
-
-        Complaint logComplaint = ComplaintFactory.logComplaint(2211, "The room i've booked is not the same as the one i see on the system", "processed");
-        Assert.assertEquals(2211, logComplaint.getComplaintID());
+        Complaint logComplaint = ComplaintFactory.logComplaint("Complaint", "There is a leak in the ceiling.", "Processing", "Hi, I will sort the problem out by this coming Wednesday. Thanks");
+        Assert.assertEquals("Complaint", logComplaint.getNature());
     }
 }
 
