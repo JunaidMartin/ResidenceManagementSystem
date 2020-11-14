@@ -22,7 +22,6 @@ public class ComplaintServiceImpl implements ComplaintService {
     @Autowired
     private ComplaintRepository repository;
 
-
     @Override
     public Complaint create(Complaint c) {
         return this.repository.save(c);

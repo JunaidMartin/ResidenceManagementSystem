@@ -38,13 +38,10 @@ public class RoomServiceImpl implements RoomService {
         return this.repository.save(room);
     }
 
-
     @Override
     public Room read(String s) {
         return this.repository.findById(s).orElseGet(null);
-
     }
-
 
     @Override
     public  Room update(Room room) {

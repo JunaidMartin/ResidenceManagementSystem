@@ -22,7 +22,7 @@ public class ComplaintController {
     //create
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public Complaint create(@RequestBody Complaint c){
-        Complaint complaint = ComplaintFactory.logComplaint(c.getComplaintID(), c.getDescription(), c.getLogStatus());
+        Complaint complaint = ComplaintFactory.logComplaint(c.getNature(), c.getDescription(), c.getLogStatus(), c.getResponse());
         return service.create(complaint);
     }
 

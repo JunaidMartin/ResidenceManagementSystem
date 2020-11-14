@@ -11,86 +11,95 @@ import java.util.Objects;
 */
 @Entity
 public class Complaint implements Serializable {
-
-
     @Id
-    private long complaintID;
+    private String complaintID;
+    private String nature;
     private String description;
     private String logStatus;
-
-    protected Complaint(){}
+    private String response;
 
     //constructor
+    protected Complaint(){}
+
     public Complaint(Builder builder) {
         this.complaintID = builder.complaintID;
+        this.nature = builder.nature;
         this.description = builder.description;
         this.logStatus = builder.logStatus;
+        this.response = builder.response;
     }
-
 
     //Getters
-
-
-    public long getComplaintID() {
+    public String getComplaintID() {
         return complaintID;
     }
-
+    public String getNature() {
+        return nature;
+    }
     public String getDescription() {
         return description;
     }
-
     public String getLogStatus() {
         return logStatus;
+    }
+    public String getResponse() {
+        return response;
     }
 
     @Override
     public String toString() {
         return "Complaint{" +
-                " complaintID: "+ complaintID +
-                ", description: " + description +
-                ", logStatus: " + logStatus + '\'' +
+                "complaintID=" + complaintID +
+                ", nature='" + nature + '\'' +
+                ", description='" + description + '\'' +
+                ", logStatus='" + logStatus + '\'' +
+                ", response='" + response + '\'' +
                 '}';
     }
 
     //Builder
-
     public static class Builder{
-
-        private long complaintID;
+        private String complaintID;
+        private String nature;
         private String description;
         private String logStatus;
+        private String response;
 
-        public Builder setComplaintID(long complaintID) {
+        public Builder setComplaintID(String complaintID) {
             this.complaintID = complaintID;
             return this;
         }
-
+        public Builder setNature(String nature) {
+            this.nature = nature;
+            return this;
+        }
         public Builder setDescription(String description) {
             this.description = description;
             return this;
         }
-
         public Builder setLogStatus(String logStatus) {
             this.logStatus = logStatus;
             return this;
         }
-
+        public Builder setResponse(String response) {
+            this.response = response;
+            return this;
+        }
 
         public Builder copy(Complaint c){
 
             this.complaintID = c.complaintID;
+            this.nature = c.nature;
             this.description = c.description;
             this.logStatus = c.logStatus;
+            this.response = c.response;
 
             return this;
         }
 
         public Complaint build(){
-
             return new Complaint(this);
         }
-
-
     }
 
         @Override
