@@ -28,8 +28,8 @@ public class ResidenceManagerController {
     }
 
     //read
-    @GetMapping("/read/{id}")
-    public ResidenceManager read(@PathVariable String id){
+    @GetMapping("/{id}")
+    public ResidenceManager read(@PathVariable int id){
         return service.read(id);
     }
 
@@ -47,7 +47,7 @@ public class ResidenceManagerController {
 
     //delete
     @DeleteMapping("/delete/{id}")
-    public boolean delete(@PathVariable String id){
+    public boolean delete(@PathVariable int id){
         return service.delete(id);
     }
 }

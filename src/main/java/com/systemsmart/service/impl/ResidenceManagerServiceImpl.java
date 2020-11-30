@@ -11,7 +11,11 @@ import java.util.stream.Collectors;
 @Service
 public class ResidenceManagerServiceImpl implements ResidenceManagerService {
 
-    // Christ Kitenge Mbuyi <217248756@mycput.ac.za>
+    /*
+     * Author: Christ Kitenge Mbuyi <217248756@mycput.ac.za>
+     * Description: This class implements the Residence Manager service interface methods
+     * Date: 03 September 2020
+     */
 
     @Autowired
     private ResManagerRepository repository;
@@ -23,23 +27,22 @@ public class ResidenceManagerServiceImpl implements ResidenceManagerService {
     }
 
     @Override
-    public ResidenceManager read(String s) {
-        return this.repository.findById(s).orElseGet(null);
+    public ResidenceManager read(Integer employeeId) {
+        return this.repository.findById(employeeId).orElseGet(null);
     }
 
     @Override
     public ResidenceManager update(ResidenceManager rs) {
-        if(this.repository.existsById(rs.getLastName())){
+        if(this.repository.existsById(rs.getEmployeeId())){
             return this.repository.save(rs);
         }
         return null;
     }
 
     @Override
-    public boolean delete(String s) {
-        this.repository.deleteById(s);
-        if(this.repository.existsById(s)) return false;
-        else return true;
+    public boolean delete(Integer employeeId) {
+        repository.deleteById(employeeId);
+        return !repository.existsById(employeeId);
     }
 
 

@@ -1,59 +1,64 @@
 //package com.systemsmart.repository.impl;
 //
-//import com.systemsmart.entity.Complaint;
-//import com.systemsmart.repository.ComplaintRepository;
+//
+//
+//import com.systemsmart.entity.Query;
+//import com.systemsmart.repository.QueryRepository;
 //import java.util.HashSet;
 //import java.util.Set;
 //
-//public class ComplaintRepositoryImpl implements ComplaintRepository{
-//    private Set<Complaint> complaintSet;
-//    private static ComplaintRepository repository = null;
+//public class QueryRepositoryImpl implements QueryRepository {
 //
+//    private static QueryRepository repository = null;
+//    private Set<Query> queryDB;
 //
-//    public static ComplaintRepository getRepository(){
-//        if (repository == null) repository = new ComplaintRepositoryImpl();
+//    private QueryRepositoryImpl() {
+//        this.queryDB = new HashSet<>();
+//    }
+//
+//    public static QueryRepository getRepository(){
+//        if (repository == null) repository =  new QueryRepositoryImpl();
 //        return repository;
 //    }
 //
-//    public ComplaintRepositoryImpl() {
-//        this.complaintSet = new HashSet<>();
+//    @Override
+//    public Query create(Query query) {
+//        queryDB.add(query);
+//        return query;
 //    }
 //
 //    @Override
-//    public Complaint create(Complaint c) {
-//       this.complaintSet.add(c);
-//       return c;
+//    public Query read(String queryID) {
+//        for (Query query: queryDB)
+//            if(query.getQueryId().equalsIgnoreCase(queryID)) return query;
+//
+//        return null;
 //    }
 //
-//
 //    @Override
-//    public Complaint read(String logStatus){
-//        for(Complaint c : this.complaintSet){
-//            if(c.getLogStatus().equalsIgnoreCase(logStatus)) return c;
+//    public Query update(Query query) {
+//        boolean queryRemoved = delete(query.getQueryId());
+//        if(queryRemoved){
+//            queryDB.add(query);
+//            return query;
 //        }
 //        return null;
 //    }
 //
 //    @Override
-//    public boolean delete(String logStatus){
-//        Complaint c = read(logStatus);
-//        if(c != null) this.complaintSet.remove(c);
-//        return true;
-//    }
-//
-//    @Override
-//    public Complaint update(Complaint complaint) {
-//        boolean deleteComplaint = delete(complaint.getLogStatus());
-//            if (deleteComplaint){
-//                this.complaintSet.add(complaint);
-//                return complaint;
+//    public boolean delete(String queryID) {
+//        Query query = read(queryID);
+//        if(query != null){
+//            queryDB.remove(query);
+//            return true;
 //        }
-//                return null;
+//
+//        return false;
 //    }
 //
 //    @Override
-//    public Set<Complaint> retrieve() {
-//        return this.complaintSet;
+//    public Set<Query> retrieve() {
+//        return queryDB;
 //    }
 //}
 //

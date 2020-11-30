@@ -7,10 +7,10 @@
 //import java.util.Set;
 //
 //public class ResManagerRepositoryImpl implements ResManagerRepository {
-//    private Set<ResidenceManager> ResManSet;
+//    private Set<ResidenceManager> resManSet;
 //
 //    public ResManagerRepositoryImpl() {
-//        this.ResManSet = new HashSet<>();
+//        this.resManSet = new HashSet<>();
 //    }
 //
 //    private static ResManagerRepository repository = null;
@@ -24,40 +24,43 @@
 //
 //    @Override
 //    public ResidenceManager create(ResidenceManager residenceManager) {
-//        this.ResManSet.add(residenceManager);
+//        this.resManSet.add(residenceManager);
 //        return residenceManager;
 //    }
 //
 //
 //    @Override
-//    public ResidenceManager read(String firstName){
-//        for(ResidenceManager rs : this.ResManSet){
-//            if(rs.getFirstName().equalsIgnoreCase(firstName)){
-//                return rs;
-//            }
+//    public ResidenceManager read(Integer employeeId){
+//        for(ResidenceManager rs : this.resManSet)
+//            if(rs.getEmployeeId() == (employeeId)) return rs;
+//
+//
+//        return null;
+//    }
+//
+//    @Override
+//    public boolean delete(Integer employeeId){
+//        ResidenceManager resMan = read(employeeId);
+//        if(resMan != null){
+//            resManSet.remove(resMan);
+//            return true;
+//        }
+//
+//        return false;
+//    }
+//
+//    @Override
+//    public ResidenceManager update(ResidenceManager residenceManager) {
+//        boolean resMan = delete(residenceManager.getEmployeeId());
+//            if(resMan){
+//                resManSet.add(residenceManager);
+//                return residenceManager;
 //        }
 //        return null;
 //    }
 //
 //    @Override
-//    public boolean delete(String lastName){
-//        ResidenceManager rs = read(lastName);
-//        if(rs != null) this.ResManSet.remove(rs);
-//        return true;
-//    }
-//
-//    @Override
-//    public ResidenceManager update(ResidenceManager residenceManager) {
-//        ResidenceManager rs = read(residenceManager.getFirstName());
-//        if (rs != null) {
-//            this.ResManSet.remove(rs);
-//            this.ResManSet.add(residenceManager);
-//        }
-//        return residenceManager;
-//    }
-//
-//    @Override
 //    public Set<ResidenceManager> retrieve() {
-//        return this.ResManSet;
+//        return this.resManSet;
 //    }
 //}

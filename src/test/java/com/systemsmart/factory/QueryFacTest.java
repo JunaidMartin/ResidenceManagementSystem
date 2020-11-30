@@ -16,7 +16,7 @@ import org.junit.Test;
 public class QueryFacTest {
     @Test
     public void ObjectEqualityTest() {
-        Query logComplaint = QueryFactory.logQuery("Complaint", "There is a leak in the ceiling.", "Processing", "Hi, I will sort the problem out by this coming Wednesday. Thanks");
+        Query logComplaint = QueryFactory.createQuery("1234", "Complaint", "Whatever", "Processing", "Hi, I will sort the problem out by this coming Wednesday. Thanks");
         Assert.assertEquals("Complaint", logComplaint.getNature());
     }
 
@@ -31,7 +31,7 @@ public class QueryFacTest {
     @Ignore
     @Test
     public void testDisabled(){
-        Query logComplaint = QueryFactory.logQuery("Complaint", "There is a leak in the ceiling.", "Processing", "Hi, I will sort the problem out by this coming Wednesday. Thanks");
+        Query logComplaint = QueryFactory.createQuery("1234", "Complaint", "Whatever", "Processing", "Hi, I will sort the problem out by this coming Wednesday. Thanks");
         Assert.assertEquals("Complaint", logComplaint.getNature());
     }
 }
