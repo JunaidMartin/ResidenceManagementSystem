@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Set;
 
 @Repository
-public interface ResManagerRepository extends JpaRepository<ResidenceManager, String> {
+public interface ResManagerRepository extends JpaRepository<ResidenceManager, Integer> {
    // Set<ResidenceManager> retrieve();
 }

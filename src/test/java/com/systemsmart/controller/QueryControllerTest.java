@@ -3,6 +3,7 @@ package com.systemsmart.controller;
 import com.systemsmart.entity.Query;
 import com.systemsmart.factory.QueryFactory;
 import junit.framework.TestCase;
+import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,11 +11,9 @@ import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.test.context.junit4.SpringRunner;
+
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @RunWith(SpringRunner.class)
@@ -26,14 +25,14 @@ public class QueryControllerTest extends TestCase {
      * Date: 23 September 2020
      */
 
-    private static Query query = QueryFactory.logQuery("Complaint", "There is a leak in the ceiling.", "", "");
+    private static Query query = QueryFactory.createQuery("1234", "Complaint", "Whatever", "Processing", "Hi, I will sort the problem out by this coming Wednesday. Thanks");
 
     private static String SECURITY_USERNAME = "admin";
     private static String SECURITY_PASSWORD = "admin123";
 
     @Autowired
     private TestRestTemplate restTemplate;
-    private String baseURL = "http://localhost:8080/complaint/";
+    private String baseURL = "http://localhost:8080/query/";
 
     @Test
     public void testCreate() {
@@ -54,24 +53,28 @@ public class QueryControllerTest extends TestCase {
         query = postResponse.getBody();
         System.out.println("Saved data:" + query);
         assertEquals(query.getQueryId(), postResponse.getBody().getQueryId());
+
     }
 
     @Test
     public void testRead() {
-        String url = baseURL + "read/" + query.getQueryId();
-        System.out.println("URL: " + url);
+        String url = baseURL + query.getQueryId();
         ResponseEntity<Query> response = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).getForEntity(url, Query.class);
-
+        System.out.println("STATUS CODE: " + response.getStatusCode());
+        System.out.println("BODY: " + response.getBody());
+        Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
+        Assert.assertEquals(query.getQueryId(), response.getBody().getQueryId());
     }
     @Test
     public void testUpdate() {
-        Query updated = new Query.Builder().copy(query).setQueryId("2200").build();
-        String url = baseURL + "update";
-        System.out.println("URL: " + url);
-        System.out.println("Previous ID: " + query.getQueryId());
-        System.out.println("New ID: " + updated.getQueryId());
-        ResponseEntity<Query> response = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).postForEntity(url, updated, Query.class);
 
+        Query qry = new Query.Builder().copy(query).setDescription("Description has been changed").build();
+        String url = baseURL + "update";
+        ResponseEntity<Query> response = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).postForEntity(url, qry, Query.class);
+        System.out.println("STATUS CODE: " + response.getStatusCode());
+        System.out.println("BODY: " + response.getBody());
+        Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
+        Assert.assertEquals(query.getQueryId(), response.getBody().getQueryId());
     }
 
     @Test
@@ -83,12 +86,18 @@ public class QueryControllerTest extends TestCase {
         ResponseEntity<String> response = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).exchange(url, HttpMethod.GET, entity, String.class);
         System.out.println(response);
         System.out.println(response.getBody());
+        Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
     @Test
     public void testDelete() {
         String url = baseURL + "delete/" + query.getQueryId();
-        System.out.println("URL: " + url);
-        restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).delete(url);
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<String> entity = new HttpEntity<>(null, headers);
+        ResponseEntity<String> response = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).exchange(url, HttpMethod.DELETE, entity, String.class);
+        System.out.println("STATUS CODE: " + response.getStatusCode());
+        System.out.println("BODY: " + response.getBody());
+        Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
+        Assert.assertEquals(true, Boolean.parseBoolean(response.getBody()));
     }
 }

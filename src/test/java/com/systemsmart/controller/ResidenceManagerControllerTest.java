@@ -45,14 +45,17 @@ public class ResidenceManagerControllerTest extends TestCase {
         assertNotNull(postResponse.getBody());
         residenceManager = postResponse.getBody();
         System.out.println("Saved data:" + residenceManager);
-        assertEquals(residenceManager.getFirstName(), postResponse.getBody().getFirstName());
+        assertEquals(residenceManager.getEmployeeId(), postResponse.getBody().getEmployeeId());
     }
 
     @Test
     public void testRead() {
-        String url = baseURL + "read/" + residenceManager.getFirstName();
-        System.out.println("URL: " + url);
+        String url = baseURL + residenceManager.getEmployeeId();
         ResponseEntity<ResidenceManager> response = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).getForEntity(url, ResidenceManager.class);
+        System.out.println("STATUS CODE: " + response.getStatusCode());
+        System.out.println("BODY: " + response.getBody());
+        Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
+        Assert.assertEquals(residenceManager.getEmployeeId(), response.getBody().getEmployeeId());
 }
 
 
@@ -60,10 +63,11 @@ public class ResidenceManagerControllerTest extends TestCase {
     public void testUpdate() {
         ResidenceManager updated = new ResidenceManager.Builder().copy(residenceManager).setLastName("Jessy").build();
         String url = baseURL + "update";
-        System.out.println("URL: " + url);
-        System.out.println("Previous last name: " + residenceManager.getLastName());
-        System.out.println("New Last name: " + updated.getLastName());
         ResponseEntity<ResidenceManager> response = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).postForEntity(url, updated, ResidenceManager.class);
+        System.out.println("STATUS CODE: " + response.getStatusCode());
+        System.out.println("BODY: " + response.getBody());
+        Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
+        Assert.assertEquals(residenceManager.getEmployeeId(), response.getBody().getEmployeeId());
     }
 
     @Test
@@ -80,8 +84,13 @@ public class ResidenceManagerControllerTest extends TestCase {
 
     @Test
     public void testDelete() {
-        String url = baseURL + "delete/" +residenceManager.getAccessLevel();
-        System.out.println("URL: " + url);
-        restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).delete(url);
+        String url = baseURL + "delete/" + residenceManager.getEmployeeId();
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<String> entity = new HttpEntity<>(null, headers);
+        ResponseEntity<String> response = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).exchange(url, HttpMethod.DELETE, entity, String.class);
+        System.out.println("STATUS CODE: " + response.getStatusCode());
+        System.out.println("BODY: " + response.getBody());
+        Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
+        Assert.assertEquals(true, Boolean.parseBoolean(response.getBody()));
     }
 }
