@@ -10,7 +10,7 @@ public class StudentFactory {
 
     public static Student buildStudent(String studNum, String firstName, String lastName, String gender,
                                        String dob, long identityNum, String homeLanguage,  String contactNum,
-                                       int campusId,  String studEmail, int resId){
+                                       int campusId, String studEmail, String residenceName){
         Student student = new Student.Builder()
                 .setStudNum(studNum)
                 .setFirstName(firstName)
@@ -22,7 +22,7 @@ public class StudentFactory {
                 .setContactNum(contactNum)
                 .setCampusId(campusId)
                 .setStudEmail(studEmail)
-                .setResId(resId)
+                .setResidenceName(residenceName)
                 .build();
         return student;
     }

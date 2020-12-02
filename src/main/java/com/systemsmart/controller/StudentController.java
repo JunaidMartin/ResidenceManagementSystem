@@ -21,7 +21,7 @@ public class StudentController {
         Student newStudent = StudentFactory.buildStudent(student.getStudNum(), student.getFirstName(),
                 student.getLastName(), student.getGender(), student.getDob(), student.getIdentityNum(),
                 student.getHomeLanguage(), student.getContactNum(), student.getCampusId(), student.getStudEmail(),
-                student.getResId());
+                student.getResidenceName());
         return studentService.create(newStudent);
     }
 

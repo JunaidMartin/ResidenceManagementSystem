@@ -16,7 +16,8 @@ public class Student implements Serializable {
     private String firstName, lastName, gender, dob;
     private long identityNum;
     private String homeLanguage, contactNum;
-    private int campusId, resId;
+    private int campusId;
+    private String residenceName;
     private String studEmail;
 
     protected Student(){}
@@ -32,7 +33,7 @@ public class Student implements Serializable {
         this.contactNum = builder.contactNum;
         this.campusId = builder.campusId;
         this.studEmail = builder.studEmail;
-        this.resId = builder.resId;
+        this.residenceName = builder.residenceName;
     }
 
     @Override
@@ -48,7 +49,7 @@ public class Student implements Serializable {
                 ", contactNum='" + contactNum + '\'' +
                 ", campusId=" + campusId +
                 ", studEmail='" + studEmail + '\'' +
-                ", resId='" + resId + '\'' +
+                ", residenceName='" + residenceName + '\'' +
                 '}';
     }
 
@@ -81,7 +82,7 @@ public class Student implements Serializable {
     public String getContactNum() {
         return contactNum;
     }
-    public int getResId() {return resId;}
+    public String getResidenceName() {return residenceName;}
 
     //Builder Class
     public static class Builder{
@@ -95,7 +96,7 @@ public class Student implements Serializable {
         private String homeLanguage;
         private int campusId;
         private String studEmail;
-        private int resId;
+        private String residenceName;
 
         public Builder setStudNum (String studNum){
             this.studNum = studNum;
@@ -137,8 +138,8 @@ public class Student implements Serializable {
             this.contactNum = contactNum;
             return this;
         }
-        public Builder setResId(int resId) {
-            this.resId = resId;
+        public Builder setResidenceName(String residenceName) {
+            this.residenceName = residenceName;
             return this;
         }
 
@@ -153,7 +154,7 @@ public class Student implements Serializable {
             this.contactNum = student.contactNum;
             this.campusId = student.campusId;
             this.studEmail = student.studEmail;
-            this.resId = student.resId;
+            this.residenceName = student.residenceName;
             return this;
         }
 
