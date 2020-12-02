@@ -25,7 +25,7 @@ public class StudentControllerTest {
 
     private static Student student = StudentFactory.buildStudent("123456789", "Junaid", "Martin",
             "Male", "10-Jul-1997", 1234567890123L, "English",
-            "0798159723", 1, "123456789@mycput.ac.za", 6);
+            "0798159723", 1, "123456789@mycput.ac.za", "Catsville");
     private static String SECURITY_USERNAME = "admin";
     private static String SECURITY_PASSWORD = "admin123";
 

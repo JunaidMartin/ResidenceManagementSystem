@@ -14,6 +14,8 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.*;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.UUID;
+
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @RunWith(SpringRunner.class)
@@ -25,7 +27,7 @@ public class QueryControllerTest extends TestCase {
      * Date: 23 September 2020
      */
 
-    private static Query query = QueryFactory.createQuery("1234", "Complaint", "Whatever", "Processing", "Hi, I will sort the problem out by this coming Wednesday. Thanks");
+    private static Query query = QueryFactory.createQuery(UUID.randomUUID().toString(), "Complaint", "Junaid Martin", "216178606","Whatever", "Processing", "Hi, I will sort the problem out by this coming Wednesday. Thanks");
 
     private static String SECURITY_USERNAME = "admin";
     private static String SECURITY_PASSWORD = "admin123";
@@ -35,7 +37,7 @@ public class QueryControllerTest extends TestCase {
     private String baseURL = "http://localhost:8080/query/";
 
     @Test
-    public void testCreate() {
+    public void a_create() {
         String url = baseURL + "create";
         System.out.println("URL:" + url);
         System.out.println("Post date:" + query);
@@ -57,7 +59,7 @@ public class QueryControllerTest extends TestCase {
     }
 
     @Test
-    public void testRead() {
+    public void b_read() {
         String url = baseURL + query.getQueryId();
         ResponseEntity<Query> response = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).getForEntity(url, Query.class);
         System.out.println("STATUS CODE: " + response.getStatusCode());
@@ -66,7 +68,7 @@ public class QueryControllerTest extends TestCase {
         Assert.assertEquals(query.getQueryId(), response.getBody().getQueryId());
     }
     @Test
-    public void testUpdate() {
+    public void c_update() {
 
         Query qry = new Query.Builder().copy(query).setDescription("Description has been changed").build();
         String url = baseURL + "update";
@@ -78,7 +80,7 @@ public class QueryControllerTest extends TestCase {
     }
 
     @Test
-    public void testGetall() {
+    public void d_getAll() {
         String url = baseURL + "all";
         System.out.println("URL: " + url);
         HttpHeaders headers = new HttpHeaders();
@@ -90,7 +92,7 @@ public class QueryControllerTest extends TestCase {
     }
 
     @Test
-    public void testDelete() {
+    public void e_delete() {
         String url = baseURL + "delete/" + query.getQueryId();
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, headers);

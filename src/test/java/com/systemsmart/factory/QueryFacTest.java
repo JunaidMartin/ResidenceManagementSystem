@@ -5,6 +5,8 @@ import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import java.util.UUID;
+
 //import static org.junit.jupiter.api.Assertions.assertTimeout;
 
 /*  Author: Christ Kitenge Mbuyi <217248756@mycput.ac.za>
@@ -16,7 +18,7 @@ import org.junit.Test;
 public class QueryFacTest {
     @Test
     public void ObjectEqualityTest() {
-        Query logComplaint = QueryFactory.createQuery("1234", "Complaint", "Whatever", "Processing", "Hi, I will sort the problem out by this coming Wednesday. Thanks");
+        Query logComplaint = QueryFactory.createQuery(UUID.randomUUID().toString(), "Complaint", "Junaid Martin", "216178606", "Whatever", "Processing", "Hi, I will sort the problem out by this coming Wednesday. Thanks");
         Assert.assertEquals("Complaint", logComplaint.getNature());
     }
 
@@ -31,7 +33,7 @@ public class QueryFacTest {
     @Ignore
     @Test
     public void testDisabled(){
-        Query logComplaint = QueryFactory.createQuery("1234", "Complaint", "Whatever", "Processing", "Hi, I will sort the problem out by this coming Wednesday. Thanks");
+        Query logComplaint = QueryFactory.createQuery(UUID.randomUUID().toString(), "Complaint","Junaid Martin", "216178606", "Whatever", "Processing", "Hi, I will sort the problem out by this coming Wednesday. Thanks");
         Assert.assertEquals("Complaint", logComplaint.getNature());
     }
 }
