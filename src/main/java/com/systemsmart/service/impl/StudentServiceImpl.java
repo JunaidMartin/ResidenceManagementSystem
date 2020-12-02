@@ -27,6 +27,12 @@ public class StudentServiceImpl implements StudentService {
         return this.repository.findAll().stream().collect(Collectors.toSet());
     }
 
+    @Override
+    public String getStudentsFromResidence(String residenceName) {
+
+        return null;
+    }
+
 /*    @Override
     public Set<Student> getStudentsWithStudentNumbers216() {
         Set<Student> students = getAll();

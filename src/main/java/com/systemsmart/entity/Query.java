@@ -11,10 +11,11 @@ Date: 05/07/2020
 */
 @Entity
 public class Query implements Serializable {
-
     @Id
     private String queryId;
     private String nature;
+    private String fullName;
+    private String studNum;
     private String description;
     private String logStatus;
     private String response;
@@ -24,6 +25,8 @@ public class Query implements Serializable {
     public Query(Builder builder) {
         this.queryId =  builder.queryId;
         this.nature = builder.nature;
+        this.fullName = builder.fullName;
+        this.studNum = builder.studNum;
         this.description = builder.description;
         this.logStatus = builder.logStatus;
         this.response = builder.response;
@@ -38,6 +41,14 @@ public class Query implements Serializable {
         return nature;
     }
 
+    public String getFullName() {
+        return fullName;
+    }
+
+    public String getStudNum() {
+        return studNum;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -50,12 +61,13 @@ public class Query implements Serializable {
         return response;
     }
 
-    //toString
     @Override
     public String toString() {
         return "Query{" +
                 "queryId='" + queryId + '\'' +
                 ", nature='" + nature + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", studNum='" + studNum + '\'' +
                 ", description='" + description + '\'' +
                 ", logStatus='" + logStatus + '\'' +
                 ", response='" + response + '\'' +
@@ -78,6 +90,8 @@ public class Query implements Serializable {
     public static class Builder{
         private String queryId;
         private String nature;
+        private String fullName;
+        private String studNum;
         private String description;
         private String logStatus;
         private String response;
@@ -89,6 +103,14 @@ public class Query implements Serializable {
 
         public Builder setNature(String nature) {
             this.nature = nature;
+            return this;
+        }
+        public Builder setFullName(String fullName) {
+            this.fullName = fullName;
+            return this;
+        }
+        public Builder setStudNum(String studNum) {
+            this.studNum = studNum;
             return this;
         }
 
@@ -110,6 +132,8 @@ public class Query implements Serializable {
         public Builder copy (Query query) {
             this.queryId = query.getQueryId();
             this.nature = query.getNature();
+            this.fullName = query.getFullName();
+            this.studNum = query.getStudNum();
             this.description = query.getDescription();
             this.logStatus = query.getLogStatus();
             this.response = query.getResponse();

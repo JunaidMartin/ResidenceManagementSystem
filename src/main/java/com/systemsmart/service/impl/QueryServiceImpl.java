@@ -19,13 +19,15 @@ import java.util.stream.Collectors;
 public class QueryServiceImpl implements QueryService {
 
 
-
+    private static QueryService service = null;
     @Autowired
-    private QueryRepository repository = null;
+    private QueryRepository repository;
+
 
     @Override
     public Query create(Query query) {
-        return this.repository.save(query);
+        Query newQuery = new Query.Builder().copy(query).setLogStatus("Processing").build();
+        return this.repository.save(newQuery);
     }
 
     @Override
@@ -40,7 +42,6 @@ public class QueryServiceImpl implements QueryService {
             return this.repository.save(query);
         }
         return null;
-
     }
 
     @Override
