@@ -28,7 +28,7 @@ public class ResidenceManagerController {
     }
 
     //read
-    @GetMapping("/{id}")
+    @GetMapping("/read/{id}")
     public ResidenceManager read(@PathVariable int id){
         return service.read(id);
     }
