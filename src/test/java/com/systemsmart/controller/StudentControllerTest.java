@@ -24,8 +24,8 @@ import static org.junit.Assert.*;
 public class StudentControllerTest {
 
     private static Student student = StudentFactory.buildStudent("123456789", "Junaid", "Martin",
-            "Male", "10-Jul-1997", 1234567890123L, "English",
-            "0798159723", 1, "123456789@mycput.ac.za", "Catsville");
+            "Male", "01-Jul-1997", 975285208456L, "English",
+            "0798759723", 1, "123456789@mycput.ac.za", "Presidential South");
     private static String SECURITY_USERNAME = "admin";
     private static String SECURITY_PASSWORD = "admin123";
 

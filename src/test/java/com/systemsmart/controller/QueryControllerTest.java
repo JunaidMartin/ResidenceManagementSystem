@@ -69,7 +69,6 @@ public class QueryControllerTest extends TestCase {
     }
     @Test
     public void c_update() {
-
         Query qry = new Query.Builder().copy(query).setDescription("Description has been changed").build();
         String url = baseURL + "update";
         ResponseEntity<Query> response = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).postForEntity(url, qry, Query.class);
