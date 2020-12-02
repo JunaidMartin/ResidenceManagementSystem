@@ -1,6 +1,7 @@
 package com.systemsmart.service;
 
 import com.systemsmart.entity.Student;
+import org.springframework.security.core.Authentication;
 
 import java.util.Set;
 /*
@@ -9,6 +10,7 @@ import java.util.Set;
  */
 public interface StudentService extends IService <Student, String> {
     Set<Student> getAll();
+    String getStudentsFromResidence(String residenceName);
     // unique business logic as per student.
 //    Set<Student> getStudentsWithStudentNumbers216();
 }

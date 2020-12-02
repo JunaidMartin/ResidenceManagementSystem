@@ -22,12 +22,12 @@ public class QueryController {
 
     @PostMapping("/create")
     public Query createQuery(@RequestBody Query query){
-        Query newQuery = QueryFactory.createQuery(query.getQueryId(), query.getNature(), query.getDescription(), query.getLogStatus(), query.getResponse());
+        Query newQuery = QueryFactory.createQuery(query.getQueryId(), query.getNature(), query.getFullName(), query.getStudNum(), query.getDescription(), query.getLogStatus(), query.getResponse());
         return service.create(newQuery);
     }
     @PostMapping("/update")
     public Query updateQuery(@RequestBody Query query){ return service.update(query);}
-    @GetMapping("/{id}")
+    @GetMapping("/read/{id}")
     public Query getQuery(@PathVariable String id){
         return service.read(id);
     }
