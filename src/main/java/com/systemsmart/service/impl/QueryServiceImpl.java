@@ -37,9 +37,10 @@ public class QueryServiceImpl implements QueryService {
 
     @Override
     public Query update(Query query) {
-
         if (this.repository.existsById(query.getQueryId())){
-            return this.repository.save(query);
+            Query currentQuery = read(query.getQueryId());
+            Query updatedQuery = new Query.Builder().copy(currentQuery).setResponse(query.getResponse()).setLogStatus("Processed").build();
+            return this.repository.save(updatedQuery);
         }
         return null;
     }
